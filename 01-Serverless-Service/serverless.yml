@@ -20,8 +20,17 @@ functions:
                 method: GET
                 path: /jobs
     createJob:
-            handler: src/jobs/create.handler
-            events:
-                - http:
-                    method: POST
-                    path: /jobs
+        handler: src/jobs/create.handler
+        events:
+            - http:
+                method: POST
+                path: /jobs
+    findJob:
+        handler: src/jobs/find.handler
+        events:
+            - http:
+                method: GET
+                path: /jobs/{id}
+                request:
+                    parameters:
+                        id: true
