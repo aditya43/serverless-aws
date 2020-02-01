@@ -2,8 +2,9 @@
   "name": "serverless-nodejs",
   "version": "1.0.0",
   "description": "Serverless Node.js",
-  "main": "events.js",
+  "main": "handler.js",
   "scripts": {
+    "dev": "sls offline start --port 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

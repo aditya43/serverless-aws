@@ -19,6 +19,7 @@ WIP (Work In Progress)!
 - [Create NodeJS Serverless Service](#create-nodejs-serverless-service)
 - [Invoke Lambda Function Locally](#invoke-lambda-function-locally)
 - [Serverless Offline](#serverless-offline)
+- [NPM Run Serverless Project Locally](#npm-run-serverless-project-locally)
 
 ## License
 Open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
@@ -60,4 +61,20 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - To install:
     ```
         npm i serverless-offline --save-dev
+    ````
+
+### NPM Run Serverless Project Locally
+- Install [Serverless Offline](#serverless-offline) plugin.
+- User `serverless.yml`, add:
+    ```
+        plugins:
+            - serverless-offline
+    ```
+- Under `package.json`, add new run script:
+    ```
+        "dev": "sls offline start --port 3000"
+    ```
+- Run:
+    ```
+        npm run dev
     ```
