@@ -10,10 +10,10 @@ const jobs = [
 ];
 
 module.exports.handler = async (event, context) => {
+    jobs.push(JSON.parse(event.body));
+
     return {
         statusCode: 200,
-        body: JSON.stringify(jobs),
-        event: JSON.stringify(event),
-        context: JSON.stringify(context)
+        body: JSON.stringify(jobs)
     };
 };
