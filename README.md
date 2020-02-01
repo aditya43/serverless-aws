@@ -18,6 +18,7 @@ WIP (Work In Progress)!
 - [Installing Serverless](#installing-serverless)
 - [Create NodeJS Serverless Service](#create-nodejs-serverless-service)
 - [Invoke Lambda Function Locally](#invoke-lambda-function-locally)
+- [Serverless Offline](#serverless-offline)
 
 ## License
 Open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
@@ -47,4 +48,16 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 
         // Example
         sls invoke local -f myfunct
+    ```
+
+### Serverless Offline
+- For **local development only**, use `Serverless Offline` plugin.
+- Plugin:
+    ```
+        https://www.npmjs.com/package/serverless-offline
+        https://github.com/dherault/serverless-offline
+    ```
+- To install:
+    ```
+        npm i serverless-offline --save-dev
     ```
