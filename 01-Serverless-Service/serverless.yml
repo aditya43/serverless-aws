@@ -23,6 +23,7 @@ service: service-01-serverless-service
 provider:
   name: aws
   runtime: nodejs12.x
+  region: ap-south-1
 
 # you can overwrite defaults here
 #  stage: dev
