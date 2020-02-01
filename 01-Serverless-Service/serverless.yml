@@ -13,3 +13,15 @@ functions:
         handler: handler.hello
     jobs:
         handler: src/jobs/handler.handler
+    listJobs:
+        handler: src/jobs/list.handler
+        events:
+            - http:
+                method: GET
+                path: /jobs
+    createJob:
+            handler: src/jobs/create.handler
+            events:
+                - http:
+                    method: POST
+                    path: /jobs
