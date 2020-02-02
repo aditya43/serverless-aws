@@ -104,6 +104,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - After running `sls deploy -v`, error: **`The specified bucket does not exist`**:
     * **Cause:** This issue occurs when we manually delete S3 bucket from AWS console.
     * **Fix:** Login to AWS console and delete stack from `CloudFormation`.
+    * **Dirty Fix (Avoid):** Delete `.serverless` directory from project (Serverless Service).
     * **Full Error Sample:**
     ```
         Serverless: Packaging service...
