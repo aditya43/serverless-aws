@@ -1,30 +1,38 @@
-const jobs = [
-    {
-        id: 1,
-        title: 'ReactJS Developer'
-    },
-    {
-        id: 2,
-        title: 'NodeJS Developer'
-    }
-];
+const dynamodb = require('../dynamodb');
+const Joi = require('joi');
 
 module.exports.handler = async (event, context) => {
-    const index = jobs.findIndex(job => job.id == event.pathParameters.id);
+    try {
+        const id = event.pathParameters.id;
 
-    if (index > -1) {
+        const schema = Joi.object().keys({
+            id: Joi.string().require()
+        });
+
+        const { error } = Joi.validate(id, schema);
+
+        if (error) {
+            const err = new Error('Validations failed');
+            err.details = error.details || {};
+
+            throw err;
+        }
+
+        const result = await dynamodb.get({
+            TableName: 'jobs-portal',
+            Key: { id }
+        }).promise();
+
         return {
             statusCode: 200,
-            body: JSON.stringify({
-                job: jobs[index]
-            })
+            body: JSON.stringify(result.item)
+        };
+    } catch (error) {
+        const body = error.details ? JSON.stringify(error.details) : JSON.stringify(error);
+
+        return {
+            statusCode: 500,
+            body
         };
     }
-
-    return {
-        statusCode: 404,
-        body: JSON.stringify({
-            message: 'Job not found'
-        })
-    };
 };
