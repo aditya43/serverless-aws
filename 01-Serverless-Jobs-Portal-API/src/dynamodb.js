@@ -1,6 +1,11 @@
 const AWS = require('aws-sdk');
 
-exports.dynamodb = new AWS.DynamoDB.DocumentClient({
-    region: 'localhost',
-    endpoint: 'http://localhost:8082'
-});
+console.log('IS_OFFLINE: ', process.env.IS_OFFLINE);
+
+const options = {};
+
+if (process.env.IS_OFFLINE) {
+    options.region = 'localhost';
+    options.endpoint = 'http://localhost:8082';
+}
+exports.dynamodb = new AWS.DynamoDB.DocumentClient(options);

@@ -5,7 +5,19 @@ provider:
     runtime: nodejs12.x
     region: ap-south-1
     environment:
+        IS_OFFLINE: false
+        JOBS_TABLE: ${self:service}-${self:opt, self:provider.stage}-jobs
         DYNAMODB_TABLE: jobsPortal
+    iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "*"
 
 plugins:
     - serverless-offline
@@ -71,7 +83,7 @@ resources:
         JobsDynamoDBTable:
             Type: "AWS::DynamoDB::Table"
             Properties:
-                TableName: 'jobs-portal'
+                TableName: ${self:provider.environment.JOBS_TABLE}
                 AttributeDefinitions:
                     - AttributeName: id
                       AttributeType: S
@@ -79,5 +91,5 @@ resources:
                     - AttributeName: id
                       KeyType: HASH
                 ProvisionedThroughput:
-                    ReadCapacityUnits: "1"
-                    WriteCapacityUnits: "1"
+                    ReadCapacityUnits: 1
+                    WriteCapacityUnits: 1
