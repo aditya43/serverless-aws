@@ -21,6 +21,8 @@ WIP (Work In Progress)!
 - [Invoke Lambda Function Locally](#invoke-lambda-function-locally)
 - [Serverless Offline](#serverless-offline)
 - [NPM Run Serverless Project Locally](#npm-run-serverless-project-locally)
+- [Deploy Serverless Service](#deploy-serverless-service)
+- [Common Issues](#common-issues)
 
 ## License
 Open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
@@ -89,4 +91,40 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - Run:
     ```
         npm run dev
+    ```
+
+### Deploy Serverless Service
+- To deploy serverless service, run:
+    ```
+        // -v: For verbose.
+        sls deploy -v
+    ```
+
+### Common Issues
+- After running `sls deploy -v`, error: **`The specified bucket does not exist`**:
+    * **Cause:** This issue occurs when we manually delete S3 bucket from AWS console.
+    * **Fix:** Login to AWS console and delete stack from `CloudFormation`.
+    * **Full Error Sample:**
+    ```
+        Serverless: Packaging service...
+        Serverless: Excluding development dependencies...
+        Serverless: Uploading CloudFormation file to S3...
+
+        Serverless Error ---------------------------------------
+
+        The specified bucket does not exist
+
+        Get Support --------------------------------------------
+            Docs:          docs.serverless.com
+            Bugs:          github.com/serverless/serverless/issues
+            Issues:        forum.serverless.com
+
+        Your Environment Information ---------------------------
+            Operating System:          darwin
+            Node Version:              13.7.0
+            Framework Version:         1.62.0
+            Plugin Version:            3.3.0
+            SDK Version:               2.3.0
+            Components Core Version:   1.1.2
+            Components CLI Version:    1.4.0
     ```
