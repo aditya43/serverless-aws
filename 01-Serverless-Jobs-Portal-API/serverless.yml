@@ -56,6 +56,15 @@ functions:
                 request:
                     parameters:
                         id: true
+    updateJob:
+        handler: src/jobs/update.handler
+        events:
+            - http:
+                method: PUT
+                path: /jobs/{id}
+                request:
+                    parameters:
+                        id: true
 
 resources:
     Resources:
