@@ -22,6 +22,7 @@ WIP (Work In Progress)!
 - [Serverless Offline](#serverless-offline)
 - [NPM Run Serverless Project Locally](#npm-run-serverless-project-locally)
 - [Deploy Serverless Service](#deploy-serverless-service)
+- [Setup Serverless DynamoDB Local](#setup-serverless-dynamodb-local)
 - [Common Issues](#common-issues)
 
 ## License
@@ -100,12 +101,32 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         sls deploy -v
     ```
 
+### Setup Serverless DynamoDB Local
+- Use following plugin to setup DynamoDB locally (for offline uses):
+    ```
+        https://www.npmjs.com/package/serverless-dynamodb-local
+        https://github.com/99xt/serverless-dynamodb-local#readme
+    ```
+- To setup:
+    ```
+        npm i serverless-dynamodb-local
+    ```
+- Register `serverless-dynamodb-local` into serverless yaml:
+    ```
+        plugins:
+            - serverless-dynamodb-local
+    ```
+- Install DynamoDB into serverless project:
+    ```
+        sls dynamodb install
+    ```
+
 ### Common Issues
 - After running `sls deploy -v`, error: **`The specified bucket does not exist`**:
     * **Cause:** This issue occurs when we manually delete S3 bucket from AWS console.
     * **Fix:** Login to AWS console and delete stack from `CloudFormation`.
     * **Dirty Fix (Avoid):** Delete `.serverless` directory from project (Serverless Service).
-    * **Full Error Sample:**
+    * **Full Error (Sample):**
     ```
         Serverless: Packaging service...
         Serverless: Excluding development dependencies...
