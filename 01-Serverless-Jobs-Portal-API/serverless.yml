@@ -4,10 +4,22 @@ provider:
     name: aws
     runtime: nodejs12.x
     region: ap-south-1
+    environment:
+        DYNAMODB_TABLE: jobsPortal
 
 plugins:
     - serverless-offline
     - serverless-dynamodb-local
+
+custom:
+  dynamodb:
+    start:
+        port: 8082
+        inMemory: true
+        migrate: true
+        onStart: true # Check if dynamodb already started. Start only if it isn't already started.
+    stages:
+      - ${self:provider.stage}
 
 functions:
     hello:
@@ -35,3 +47,19 @@ functions:
                 request:
                     parameters:
                         id: true
+
+resources:
+    Resources:
+        JobsDynamoDBTable:
+            Type: "AWS::DynamoDB::Table"
+            Properties:
+                TableName: jobsPortal
+                AttributeDefinitions:
+                    - AttributeName: id
+                      AttributeType: S
+                KeySchema:
+                    - AttributeName: id
+                      KeyType: HASH
+                ProvisionedThroughput:
+                    ReadCapacityUnits: "1"
+                    WriteCapacityUnits: "1"
