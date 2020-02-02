@@ -16,6 +16,7 @@ WIP (Work In Progress)!
 
 ## Important Notes
 - [Installing Serverless](#installing-serverless)
+- [Configuring AWS Credentials For Serverless](#configuring-aws-credentials-for-serverless)
 - [Create NodeJS Serverless Service](#create-nodejs-serverless-service)
 - [Invoke Lambda Function Locally](#invoke-lambda-function-locally)
 - [Serverless Offline](#serverless-offline)
@@ -32,6 +33,17 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - For automatic updates, after above command, run:
     ```
         sudo chown -R $USER:$(id -gn $USER) /Users/adiinviter/.config
+    ```
+
+### Configuring AWS Credentials For Serverless
+- To configure aws user credentials, run:
+    ```
+        // -o: To overwrite existing credentials if there are any set already.
+        sls config credentials --provider aws --key [ACCESS_KEY] --secret [SECRET_KEY] -o
+    ```
+- After running above command, credentials will get set under following path:
+    ```
+        ~/.aws/credentials
     ```
 
 ### Create NodeJS Serverless Service
