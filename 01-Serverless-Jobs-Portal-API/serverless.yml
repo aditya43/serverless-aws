@@ -47,6 +47,15 @@ functions:
                 request:
                     parameters:
                         id: true
+    deleteJob:
+        handler: src/jobs/delete.handler
+        events:
+            - http:
+                method: DELETE
+                path: /jobs/{id}
+                request:
+                    parameters:
+                        id: true
 
 resources:
     Resources:
