@@ -80,7 +80,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 
 ### NPM Run Serverless Project Locally
 - Install [Serverless Offline](#serverless-offline) plugin.
-- User `serverless.yml`, add:
+- Under `serverless.yml`, add:
     ```
         plugins:
             - serverless-offline
