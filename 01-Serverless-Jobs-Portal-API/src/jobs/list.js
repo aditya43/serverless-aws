@@ -1,17 +1,17 @@
-const jobs = [
-    {
-        id: 1,
-        title: 'ReactJS Developer'
-    },
-    {
-        id: 2,
-        title: 'NodeJS Developer'
-    }
-];
+const dynamodb = require('../dynamodb');
 
 module.exports.handler = async (event, context) => {
-    return {
-        statusCode: 200,
-        body: JSON.stringify(jobs)
-    };
+    try {
+        const jobs = await dynamodb.scan({ TableName: 'jobs-portal' }).promise();
+
+        return {
+            statusCode: 200,
+            body: JSON.stringify(jobs)
+        };
+    } catch (error) {
+        return {
+            statusCode: 500,
+            body: JSON.stringify(error)
+        };
+    }
 };
