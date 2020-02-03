@@ -20,6 +20,7 @@ WIP (Work In Progress)!
 - [Configuring AWS Credentials For Serverless](#configuring-aws-credentials-for-serverless)
 - [Create NodeJS Serverless Service](#create-nodejs-serverless-service)
 - [Invoke Lambda Function Locally](#invoke-lambda-function-locally)
+- [Event - Passing Data To Lambda Function](#event---passing-data-to-lambda-function)
 - [Serverless Offline](#serverless-offline)
 - [NPM Run Serverless Project Locally](#npm-run-serverless-project-locally)
 - [Deploy Serverless Service](#deploy-serverless-service)
@@ -83,6 +84,16 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 
         // Example
         sls invoke local -f myfunct
+    ```
+
+### Event - Passing Data To Lambda Function
+- To pass data to lambda function,
+    ```
+        // Syntax
+        sls invoke local -f [FUNCTION_NAME] -d [DATA]
+
+        // Example
+        sls invoke local -f sayHello -d 'Aditya'
     ```
 
 ### Serverless Offline
