@@ -44,9 +44,39 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 
         # Create aws nodejs serverless template.
         sls create --t aws-nodejs
+
+        # Init npm.
+        npm init -y
+
+        # Install serverless-offline as a dev dependancy.
+        npm i serverless-offline --save-dev
     ```
 - After running above commands, update the `service` property in `serverless.yml` with your service name.
     * **NOTE:** `service` property in `serverless.yml` file is mostly your project name. It is not a name of your specific lambda function.
+- Update `serverless.yml` file with following config:
+    ```yml
+        service: my-project-name
+        plugins:
+            - serverless-offline    # Add this plugin if you are using it.
+        provider:
+            name: aws
+            runtime: nodejs12.x
+            stage: dev              # Stage can be changed while executing deploy command.
+            region: ap-south-1      # Set region.
+    ```
+- To add new lambda function with api endpoint, add following in `serverless.yml`:
+    ```yml
+        functions:
+            hello:
+                handler: src/controllers/users.find
+            events:
+                - http:
+                    path: users/{id}
+                    method: GET
+                    request:
+                        parameters:
+                            id: true
+    ```
 
 ### Installing Serverless
 - To install `Serverless` globally:
@@ -118,9 +148,11 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
             // sls invoke local -f sayHello -d '{"name": "Aditya", "age": 33}'
 
             module.exports.hello = async event => {
+                const {name, age} = event;
+
                 return {
                     statusCode: 200,
-                    body: JSON.stringify({message: `Hello ${event.name}, Age: ${event.age}`})
+                    body: JSON.stringify({message: `Hello ${name}, Age: ${age}`})
                 };
             };
         ```
