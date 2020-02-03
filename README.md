@@ -92,19 +92,39 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         // Syntax
         sls invoke local -f [FUNCTION_NAME] -d [DATA]
 
-        // Example
+        // Example #1: to pass a single string value into lambda function.
         sls invoke local -f sayHello -d 'Aditya'
+
+        // Example #2: to pass a object into lambda function.
+        sls invoke local -f sayHello -d '{"name": "Aditya", "age": 33}'
     ```
 - `event` object holds any data passed into lambda function. To access it:
-    ```
-        module.exports.hello = async event => {
-            const userName = event; // Data is available on 'event'.
-            return {
-                statusCode: 200,
-                body: JSON.stringify({message: `Hello ${userName}`})
+    * Accessing data directly passed as string as shown in `Example #1` above:
+        ```javascript
+            // Example #1: to pass a single string value into lambda function.
+            // sls invoke local -f sayHello -d 'Aditya'
+
+            module.exports.hello = async event => {
+                const userName = event; // Data is available on 'event'.
+                return {
+                    statusCode: 200,
+                    body: JSON.stringify({message: `Hello ${userName}`})
+                };
             };
-        };
-    ```
+        ```
+    * Accessing object data passed as shown in `Example #2` above:
+        ```javascript
+            // Example #2: to pass a object into lambda function.
+            // sls invoke local -f sayHello -d '{"name": "Aditya", "age": 33}'
+
+            module.exports.hello = async event => {
+                return {
+                    statusCode: 200,
+                    body: JSON.stringify({message: `Hello ${event.name}, Age: ${event.age}`})
+                };
+            };
+        ```
+
 
 ### Serverless Offline
 - For **local development only**, use `Serverless Offline` plugin.
