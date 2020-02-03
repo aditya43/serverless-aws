@@ -1,0 +1,17 @@
+{
+  "name": "mini-projects",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "dev": "sls offline start --port 3000",
+    "dynamodb:start": "sls dynamodb start --port 8082",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless-offline": "^5.12.1"
+  }
+}

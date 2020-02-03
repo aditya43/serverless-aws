@@ -53,6 +53,15 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     ```
 - After running above commands, update the `service` property in `serverless.yml` with your service name.
     * **NOTE:** `service` property in `serverless.yml` file is mostly your project name. It is not a name of your specific lambda function.
+- Add following scripts under `package.json`:
+    ```json
+        {
+            "scripts": {
+                "dev": "sls offline start --port 3000",
+                "dynamodb:start": "sls dynamodb start --port 8082",
+            }
+        }
+    ```
 - Update `serverless.yml` file with following config:
     ```yml
         service: my-project-name
@@ -76,6 +85,14 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
                     request:
                         parameters:
                             id: true
+    ```
+- To run project locally:
+    ```sh
+        # Using npm
+        npm run dev
+
+        # Directly using serverless
+        sls offline start --port 3000
     ```
 
 ### Installing Serverless

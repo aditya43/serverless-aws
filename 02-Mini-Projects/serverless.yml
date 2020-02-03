@@ -26,6 +26,9 @@ provider:
   stage: dev
   region: ap-south-1
 
+plugins:
+    - serverless-Offline
+
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
 #    - Effect: "Allow"
@@ -57,13 +60,13 @@ package:
 
 functions:
   hello:
-    handler: handler.hello
+    handler: /src/hello.handler
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
     events:
         - http:
-            path: users/create
+            path: hello/{name}
             method: get
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
