@@ -50,39 +50,39 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 
 ### Installing Serverless
 - To install `Serverless` globally:
-    ```
+    ```shell
         sudo npm i -g serverless
     ```
 - For automatic updates, after above command, run:
-    ```
+    ```shell
         sudo chown -R $USER:$(id -gn $USER) /Users/adiinviter/.config
     ```
 
 ### Configuring AWS Credentials For Serverless
 - To configure aws user credentials, run:
-    ```
-        // -o: To overwrite existing credentials if there are any set already.
+    ```shell
+        # -o: To overwrite existing credentials if there are any set already.
         sls config credentials --provider aws --key [ACCESS_KEY] --secret [SECRET_KEY] -o
     ```
 - After running above command, credentials will get set under following path:
-    ```
+    ```shell
         ~/.aws/credentials
     ```
 
 ### Create NodeJS Serverless Service
 - Each service is a combination of multiple `Lambda Functions`.
 - To create `NodeJS Serverless Service`:
-    ```
+    ```shell
         sls create --t aws-nodejs
     ```
 
 ### Invoke Lambda Function Locally
 - To invoke a `Lambda Function` locally:
-    ```
-        // Syntax
+    ```shell
+        # Syntax
         sls invoke local -f [FUNCTION_NAME]
 
-        // Example
+        # Example
         sls invoke local -f myfunct
     ```
 
@@ -134,30 +134,30 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         https://github.com/dherault/serverless-offline
     ```
 - To install:
-    ```
+    ```shell
         npm i serverless-offline --save-dev
     ````
 
 ### NPM Run Serverless Project Locally
 - Install [Serverless Offline](#serverless-offline) plugin.
 - Under `serverless.yml`, add:
-    ```
+    ```yml
         plugins:
             - serverless-offline
     ```
 - Under `package.json`, add new run script:
-    ```
+    ```json
         "dev": "sls offline start --port 3000"
     ```
 - Run:
-    ```
+    ```shell
         npm run dev
     ```
 
 ### Deploy Serverless Service
 - To deploy serverless service, run:
-    ```
-        // -v: For verbose.
+    ```shell
+        # -v: For verbose.
         sls deploy -v
     ```
 
@@ -168,16 +168,16 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         https://github.com/99xt/serverless-dynamodb-local#readme
     ```
 - To setup:
-    ```
+    ```shell
         npm i serverless-dynamodb-local
     ```
 - Register `serverless-dynamodb-local` into serverless yaml:
-    ```
+    ```yml
         plugins:
             - serverless-dynamodb-local
     ```
 - Install DynamoDB into serverless project:
-    ```
+    ```shell
         sls dynamodb install
     ```
 
@@ -187,7 +187,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     * **Fix:** Login to AWS console and delete stack from `CloudFormation`.
     * **Dirty Fix (Avoid):** Delete `.serverless` directory from project (Serverless Service).
     * **Full Error (Sample):**
-    ```
+    ```shell
         Serverless: Packaging service...
         Serverless: Excluding development dependencies...
         Serverless: Uploading CloudFormation file to S3...
