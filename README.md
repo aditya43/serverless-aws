@@ -95,7 +95,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         // Example
         sls invoke local -f sayHello -d 'Aditya'
     ```
-- To access above data in lambda function,
+- `event` object holds any data passed into lambda function. To access it:
     ```
         module.exports.hello = async event => {
             const userName = event; // Data is available on 'event'.
