@@ -32,17 +32,17 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 
 ### Full Setup 101
 - Setup:
-    ```
-        // Install serverless globally.
+    ```shell
+        # Install serverless globally.
         sudo npm i -g serverless
 
-        // (Optional) For automatic updates.
+        # (Optional) For automatic updates.
         sudo chown -R $USER:$(id -gn $USER) /Users/adiinviter/.config
 
-        // Configure user credentials for aws service provider.
+        # Configure user credentials for aws service provider.
         sls config credentials --provider aws --key [ACCESS_KEY] --secret [SECRET_KEY] -o
 
-        // Create aws nodejs serverless template.
+        # Create aws nodejs serverless template.
         sls create --t aws-nodejs
     ```
 - After running above commands, update the `service` property in `serverless.yml` with your service name.
@@ -88,14 +88,14 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 
 ### Event - Passing Data To Lambda Function
 - To pass data to lambda function,
-    ```
-        // Syntax
+    ```shell
+        # Syntax
         sls invoke local -f [FUNCTION_NAME] -d [DATA]
 
-        // Example #1: to pass a single string value into lambda function.
+        # Example #1: to pass a single string value into lambda function.
         sls invoke local -f sayHello -d 'Aditya'
 
-        // Example #2: to pass a object into lambda function.
+        # Example #2: to pass a object into lambda function.
         sls invoke local -f sayHello -d '{"name": "Aditya", "age": 33}'
     ```
 - `event` object holds any data passed into lambda function. To access it:
