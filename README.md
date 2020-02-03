@@ -124,6 +124,14 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         # To remove a specific function from a specific stage.
         sls remove -v -f sayHello -s dev
     ```
+- To create a simple cron job lambda function, add this to `serverless.yml`:
+    ```yaml
+        # Below code will execute 'cron.handler' every 1 minute
+        cron:
+            handler: /src/cron.handler
+            events:
+                - schedule: rate(1 minute)
+    ```
 
 ### Installing Serverless
 - To install `Serverless` globally:
