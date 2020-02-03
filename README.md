@@ -94,6 +94,10 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         # Directly using serverless
         sls offline start --port 3000
     ```
+- To deploy project:
+    ```sh
+        sls deploy -v
+    ```
 
 ### Installing Serverless
 - To install `Serverless` globally:
