@@ -94,9 +94,35 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         # Directly using serverless
         sls offline start --port 3000
     ```
-- To deploy project:
+- To deploy:
     ```sh
+        # To deploy all lambda functions.
         sls deploy -v
+
+        # To deploy a specific function.
+        sls deploy -v -f [FUNCTION_NAME]
+
+        # To deploy project on a different stage (e.g. production)
+        sls deploy -v -s production
+    ```
+- To view logs for a specific function in a specific stage (e.g. dev, prod):
+    ```sh
+        # Syntax:
+        sls logs -f [FUNCTION_NAME] -s [STAGE_NAME] --startTime 10m
+
+        # Example #1:
+        sls logs -f sayHello -s production --startTime 10m
+
+        # Example #2:
+        sls logs -f sayHello -s dev --startTime 15m
+    ```
+- To remove project/function:
+    ```sh
+        # To remove everything.
+        sls remove -v -s [STAGE_NAME]
+
+        # To remove a specific function from a specific stage.
+        sls remove -v -f sayHello -s dev
     ```
 
 ### Installing Serverless
