@@ -32,7 +32,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 
 ### Full Setup 101
 - Setup:
-    ```zsh
+    ```sh
         # Install serverless globally.
         sudo npm i -g serverless
 
@@ -50,35 +50,35 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 
 ### Installing Serverless
 - To install `Serverless` globally:
-    ```zsh
+    ```sh
         sudo npm i -g serverless
     ```
 - For automatic updates, after above command, run:
-    ```zsh
+    ```sh
         sudo chown -R $USER:$(id -gn $USER) /Users/adiinviter/.config
     ```
 
 ### Configuring AWS Credentials For Serverless
 - To configure aws user credentials, run:
-    ```zsh
+    ```sh
         # -o: To overwrite existing credentials if there are any set already.
         sls config credentials --provider aws --key [ACCESS_KEY] --secret [SECRET_KEY] -o
     ```
 - After running above command, credentials will get set under following path:
-    ```zsh
+    ```sh
         ~/.aws/credentials
     ```
 
 ### Create NodeJS Serverless Service
 - Each service is a combination of multiple `Lambda Functions`.
 - To create `NodeJS Serverless Service`:
-    ```zsh
+    ```sh
         sls create --t aws-nodejs
     ```
 
 ### Invoke Lambda Function Locally
 - To invoke a `Lambda Function` locally:
-    ```zsh
+    ```sh
         # Syntax
         sls invoke local -f [FUNCTION_NAME]
 
@@ -88,7 +88,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 
 ### Event - Passing Data To Lambda Function
 - To pass data to lambda function,
-    ```zsh
+    ```sh
         # Syntax
         sls invoke local -f [FUNCTION_NAME] -d [DATA]
 
@@ -134,7 +134,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         https://github.com/dherault/serverless-offline
     ```
 - To install:
-    ```zsh
+    ```sh
         npm i serverless-offline --save-dev
     ````
 
@@ -150,13 +150,13 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         "dev": "sls offline start --port 3000"
     ```
 - Run:
-    ```zsh
+    ```sh
         npm run dev
     ```
 
 ### Deploy Serverless Service
 - To deploy serverless service, run:
-    ```zsh
+    ```sh
         # -v: For verbose.
         sls deploy -v
     ```
@@ -168,7 +168,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         https://github.com/99xt/serverless-dynamodb-local#readme
     ```
 - To setup:
-    ```zsh
+    ```sh
         npm i serverless-dynamodb-local
     ```
 - Register `serverless-dynamodb-local` into serverless yaml:
@@ -177,7 +177,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
             - serverless-dynamodb-local
     ```
 - Install DynamoDB into serverless project:
-    ```zsh
+    ```sh
         sls dynamodb install
     ```
 
@@ -187,7 +187,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     * **Fix:** Login to AWS console and delete stack from `CloudFormation`.
     * **Dirty Fix (Avoid):** Delete `.serverless` directory from project (Serverless Service).
     * **Full Error (Sample):**
-    ```zsh
+    ```sh
         Serverless: Packaging service...
         Serverless: Excluding development dependencies...
         Serverless: Uploading CloudFormation file to S3...
