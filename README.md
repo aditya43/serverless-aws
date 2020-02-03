@@ -15,7 +15,7 @@ Aditya Hajare ([Linkedin](https://in.linkedin.com/in/aditya-hajare)).
 WIP (Work In Progress)!
 
 ## Important Notes
-- [Full Setup 101](#full-setup-101)
+- [Setup And Workflow 101](#setup-and-workflow-101)
 - [Installing Serverless](#installing-serverless)
 - [Configuring AWS Credentials For Serverless](#configuring-aws-credentials-for-serverless)
 - [Create NodeJS Serverless Service](#create-nodejs-serverless-service)
@@ -30,7 +30,7 @@ WIP (Work In Progress)!
 ## License
 Open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
 
-### Full Setup 101
+### Setup And Workflow 101
 - Setup:
     ```sh
         # Install serverless globally.
