@@ -15,6 +15,7 @@ Aditya Hajare ([Linkedin](https://in.linkedin.com/in/aditya-hajare)).
 WIP (Work In Progress)!
 
 ## Important Notes
+- [Full Setup 101](#full-setup-101)
 - [Installing Serverless](#installing-serverless)
 - [Configuring AWS Credentials For Serverless](#configuring-aws-credentials-for-serverless)
 - [Create NodeJS Serverless Service](#create-nodejs-serverless-service)
@@ -27,6 +28,23 @@ WIP (Work In Progress)!
 
 ## License
 Open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+### Full Setup 101
+- Setup:
+    ```
+        // Install serverless globally.
+        sudo npm i -g serverless
+
+        // (Optional) For automatic updates.
+        sudo chown -R $USER:$(id -gn $USER) /Users/adiinviter/.config
+
+        // Configure user credentials for aws service provider.
+        sls config credentials --provider aws --key [ACCESS_KEY] --secret [SECRET_KEY] -o
+
+        // Create aws nodejs serverless template.
+        sls create --t aws-nodejs
+    ```
+- After running above commands, update the `service` property in `serverless.yml` with your service name.
 
 ### Installing Serverless
 - To install `Serverless` globally:
