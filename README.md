@@ -95,6 +95,16 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         // Example
         sls invoke local -f sayHello -d 'Aditya'
     ```
+- To access above data in lambda function,
+    ```
+        module.exports.hello = async event => {
+            const userName = event; // Data is available on 'event'.
+            return {
+                statusCode: 200,
+                body: JSON.stringify({message: `Hello ${userName}`})
+            };
+        };
+    ```
 
 ### Serverless Offline
 - For **local development only**, use `Serverless Offline` plugin.
