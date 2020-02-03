@@ -45,6 +45,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         sls create --t aws-nodejs
     ```
 - After running above commands, update the `service` property in `serverless.yml` with your service name.
+    * **NOTE:** `service` property in `serverless.yml` file is mostly your project name. It is not a name of your specific lambda function.
 
 ### Installing Serverless
 - To install `Serverless` globally:
