@@ -110,6 +110,9 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         # Syntax:
         sls logs -f [FUNCTION_NAME] -s [STAGE_NAME] --startTime 10m
 
+        # Use -t to view logs in real time. Good for monitoring cron jobs.
+        sls logs -f [FUNCTION_NAME] -s [STAGE_NAME] -t
+
         # Example #1:
         sls logs -f sayHello -s production --startTime 10m
 
