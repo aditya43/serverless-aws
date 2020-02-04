@@ -4,7 +4,7 @@ const { getPage, parsePage, saveRatingsToDB } = require('./utils');
 
 module.exports.scrape = async event => {
     getPage(event)
-        .then(page => console.log(page));
+        .then(page => parsePage(page));
 
     return {
         statusCode: 200,
