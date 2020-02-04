@@ -5,5 +5,5 @@ provider:
     runtime: nodejs12.x
 
 functions:
-    hello:
-        handler: handler.hello
+    scrape:
+        handler: handler.scrape
