@@ -65,11 +65,11 @@ functions:
             - schedule: rate(1 minute)
 
     hello:
-    handler: /src/hello.handler
-    events:
-        - http:
-            path: hello/{name}
-            method: get
+        handler: /src/hello.handler
+        events:
+            - http:
+                path: hello/{name}
+                method: get
 
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}

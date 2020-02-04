@@ -1,4 +1,4 @@
-use 'strict';
+'use strict';
 
 module.exports.handler = async (event, context, callback) => {
     const now = new Date();
@@ -8,3 +8,4 @@ module.exports.handler = async (event, context, callback) => {
     console.log(message);
     callback(null, message);
 }
+;
