@@ -7,5 +7,4 @@ module.exports.handler = async (event, context, callback) => {
 
     console.log(message);
     callback(null, message);
-}
-;
+};
