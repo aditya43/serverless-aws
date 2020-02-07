@@ -2,6 +2,7 @@ const cheerio = require('cheerio');
 
 module.exports = page => {
     try {
+        // eslint-disable-next-line no-unused-vars
         const $ = cheerio.load(page);
 
         // Actual values:

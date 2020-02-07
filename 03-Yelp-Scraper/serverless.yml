@@ -3,6 +3,25 @@ service: yelp-scraper
 provider:
     name: aws
     runtime: nodejs12.x
+    region: us-west-2
+    stage: dev
+    environment:
+        DYNAMODB_TABLE: yelp-ratings
+    iamRoleStatements:
+    - Effect: Allow
+    Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+    Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+
+package:
+    include:
+        - utils/**
+
 
 functions:
     scrape:
