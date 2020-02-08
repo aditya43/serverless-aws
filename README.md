@@ -48,8 +48,8 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         # Init npm.
         npm init -y
 
-        # Install serverless-offline as a dev dependancy.
-        npm i serverless-offline --save-dev
+        # Install serverless-offline and serverless-offline-scheduler as dev dependancies.
+        npm i serverless-offline serverless-offline-scheduler --save-dev
     ```
 - After running above commands, update the `service` property in `serverless.yml` with your service name.
     * **NOTE:** `service` property in `serverless.yml` file is mostly your project name. It is not a name of your specific lambda function.
@@ -67,6 +67,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         service: my-project-name
         plugins:
             - serverless-offline    # Add this plugin if you are using it.
+            - serverless-offline-scheduler  # Add this plugin if you are using it.
         provider:
             name: aws
             runtime: nodejs12.x
@@ -93,6 +94,14 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 
         # Directly using serverless
         sls offline start --port 3000
+    ```
+- To invoke lambda function locally:
+    ```sh
+        sls invoke local -f [FUNCTION_NAME]
+    ```
+- To run lambda crons locally:
+    ```sh
+        sudo sls schedule
     ```
 - To deploy:
     ```sh

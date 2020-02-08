@@ -1,5 +1,9 @@
 service: yelp-scraper
 
+plugins:
+    - serverless-offline
+    - serverless-offline-scheduler
+
 provider:
     name: aws
     runtime: nodejs12.x
@@ -9,14 +13,18 @@ provider:
         DYNAMODB_TABLE: yelp-ratings
     iamRoleStatements:
     - Effect: Allow
-    Action:
+      Action:
+        - "lambda:InvokeFunction"
+      Resource: "*"
+    - Effect: Allow
+      Action:
         - dynamodb:Query
         - dynamodb:Scan
         - dynamodb:GetItem
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-    Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
 
 package:
     include:
@@ -26,3 +34,7 @@ package:
 functions:
     scrape:
         handler: handler.scrape
+    launch_scrapers:
+        handler: handler.launch_scrapers
+        events:
+            - schedule: cron(0 9 ? * 2#1 *) # UTC Time
