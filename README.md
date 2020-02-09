@@ -67,7 +67,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         sls config credentials --provider aws --key [ACCESS_KEY] --secret [SECRET_KEY] -o
 
         # Create aws nodejs serverless template.
-        sls create --t aws-nodejs
+        sls create -t aws-nodejs
 
         # Init npm.
         npm init -y
