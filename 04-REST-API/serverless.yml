@@ -9,6 +9,11 @@ provider:
   stage: dev              # Stage can be changed while executing deploy command.
   region: ap-south-1      # Set region.
 
+package:
+  include:
+    - features/**
+    - models/**
+
 functions:
   getTodo:
     handler: features/read.getTodo
