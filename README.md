@@ -1,12 +1,36 @@
 ## About This Project
-AWS Serverless With Node.JS.
+AWS Serverless With Node.JS. Technologies:
+- Serverless Framework
 - AWS SAM (Serverless Architecture Model).
-- AWS Lambda.
-- AWS API Gateway.
+- Lambda.
+- Step Functions.
+- API Gateway.
 - RDS.
 - DynamoDB.
 - ElephantSQL.
+- CloudFormation.
+- CI/CD.
+- CloudWatch.
+- CodeCommit.
+- CodeBuild.
+- CodePipeline.
 - S3 Notifications.
+- SNS.
+- SQS.
+- Cognito.
+- Lambda Crons.
+- CORS.
+- Apache VTL (Velocity Template Language).
+- Swagger.
+- KMS.
+- VPCs.
+- DLQs.
+- CloudFront.
+- OICD.
+- Kinesis.
+- MQTT.
+- IoT.
+- And lot more...
 
 ## Author
 Aditya Hajare ([Linkedin](https://in.linkedin.com/in/aditya-hajare)).
