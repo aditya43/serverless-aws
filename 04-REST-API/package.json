@@ -1,0 +1,16 @@
+{
+  "name": "serverless-rest-api",
+  "version": "1.0.0",
+  "description": "Serverless framework | REST API",
+  "main": "index.js",
+  "scripts": {
+    "dev": "sls offline start --port 3000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Aditya Hajare",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless-offline": "^5.12.1"
+  }
+}
