@@ -10,9 +10,16 @@ provider:
   region: ap-south-1      # Set region.
 
 functions:
-  firstGET:
-    handler: features/read.firstGET
+  getTodo:
+    handler: features/read.getTodo
     events:
       - http:
-          path: first_path
-          method: get
+          path: todo
+          method: GET
+
+  createTodo:
+    handler: features/create.createTodo
+    events:
+      - http:
+          path: todo
+          method: POST

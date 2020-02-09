@@ -1,9 +1,9 @@
 'use strict';
 
-module.exports.firstGET = async (event, context, callback) => {
-    const message = 'GET route hit';
+module.exports.getTodo = async event => {
+    const todo = 'Make dinner';
     return {
         statusCode: 200,
-        body: JSON.stringify({ message }, null, 2)
+        body: JSON.stringify({ todo }, null, 2)
     };
 };
