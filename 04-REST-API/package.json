@@ -12,5 +12,9 @@
   "license": "ISC",
   "devDependencies": {
     "serverless-offline": "^5.12.1"
+  },
+  "dependencies": {
+    "pg": "^7.18.1",
+    "sequelize": "^5.21.4"
   }
 }

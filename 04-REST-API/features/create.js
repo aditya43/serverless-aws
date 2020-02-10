@@ -1,10 +1,19 @@
-module.exports.createTodo = async (event, context, callback) => {
-    const body = JSON.parse(event.body);
+const db = require('../db');
 
-    const mockDB = `Saved to db: ${body.todo}`;
+module.exports.createTodo = async event => {
+    const body = JSON.parse(event.body);
+    console.log(body);
+    if (!body.task) {
+        return {
+            statusCode: 401,
+            body: JSON.stringify({ message: 'Invalid task' }, null, 2)
+        };
+    }
+
+    const task = await db.todo.create({ task: body.task });
 
     return {
-        statusCode: 200,
-        body: JSON.stringify({ todo: mockDB }, null, 2)
+        statusCode: 201,
+        body: JSON.stringify({ todo: task }, null, 2)
     };
 };
