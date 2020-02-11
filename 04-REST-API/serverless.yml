@@ -8,6 +8,9 @@ provider:
   runtime: nodejs12.x
   stage: dev              # Stage can be changed while executing deploy command.
   region: ap-south-1      # Set region.
+  timeout: 300
+  apiKeys:
+    - todoAPI
 
 package:
   include:
@@ -21,6 +24,7 @@ functions:
       - http:
           path: todo/{id}
           method: GET
+          private: true
   listTodos:
     handler: features/read.listTodos
     events:
@@ -33,15 +37,18 @@ functions:
       - http:
           path: todo
           method: POST
+          private: true
   deleteTodo:
     handler: features/delete.deleteTodo
     events:
       - http:
           path: todo/{id}
           method: DELETE
+          private: true
   updateTodo:
     handler: features/update.updateTodo
     events:
       - http:
           path: todo/{id}
           method: PATCH
+          private: true
