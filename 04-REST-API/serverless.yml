@@ -19,7 +19,7 @@ functions:
     handler: features/read.getTodo
     events:
       - http:
-          path: todo
+          path: todo/{id}
           method: GET
 
   listTodos:

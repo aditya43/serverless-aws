@@ -19,7 +19,10 @@ module.exports.createTodo = async event => {
     } catch (error) {
         return {
             statusCode: 500,
-            body: JSON.stringify({ error: db }, null, 2)
+            body: JSON.stringify({
+                message: error.message || '',
+                error: error
+            }, null, 2)
         };
     }
 };
