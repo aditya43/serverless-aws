@@ -35,3 +35,10 @@ functions:
       - http:
           path: todo
           method: POST
+
+  deleteTodo:
+    handler: features/delete.deleteTodo
+    events:
+      - http:
+          path: todo/{id}
+          method: DELETE
