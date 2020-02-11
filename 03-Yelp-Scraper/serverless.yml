@@ -30,7 +30,6 @@ package:
     include:
         - utils/**
 
-
 functions:
     scrape:
         handler: handler.scrape

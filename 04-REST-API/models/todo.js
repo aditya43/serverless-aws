@@ -37,6 +37,6 @@ module.exports = (sequelize, DataTypes) => {
         underscored: true, // Sequelize by default expects column names to be camel case. Since we are using postgresql, column names cannot be camel case. Instead they are snake case.
         paranoid: true, // When anything is deleted from this table, it won't delete a row. Instead it will set 'deleted_at' key.
         underscoredAll: true,
-        timestamps: true
+        timestamps: false
     });
 };
