@@ -21,24 +21,27 @@ functions:
       - http:
           path: todo/{id}
           method: GET
-
   listTodos:
     handler: features/read.listTodos
     events:
       - http:
           path: todos
           method: GET
-
   createTodo:
     handler: features/create.createTodo
     events:
       - http:
           path: todo
           method: POST
-
   deleteTodo:
     handler: features/delete.deleteTodo
     events:
       - http:
           path: todo/{id}
           method: DELETE
+  updateTodo:
+    handler: features/update.updateTodo
+    events:
+      - http:
+          path: todo/{id}
+          method: PATCH

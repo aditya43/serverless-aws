@@ -33,5 +33,4 @@ module.exports.deleteTodo = async event => {
             }, null, 2)
         };
     }
-}
-;
+};
