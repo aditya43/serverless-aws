@@ -5,9 +5,9 @@ module.exports.deleteTodo = async event => {
         const id = event.pathParameters.id;
 
         if (id) {
-            const res = await db.todo.destroy({ where: { id } });
+            const deletedRowsCount = await db.todo.destroy({ where: { id } });
 
-            if (res) {
+            if (deletedRowsCount > 0) {
                 return {
                     statusCode: 200,
                     body: JSON.stringify({ message: 'Task has been deleted' }, null, 2)
