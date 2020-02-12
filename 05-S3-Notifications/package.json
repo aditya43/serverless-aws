@@ -13,5 +13,9 @@
   "devDependencies": {
     "serverless-offline": "^5.12.1",
     "serverless-s3-local": "^0.5.4"
+  },
+  "dependencies": {
+    "moment-timezone": "^0.5.27",
+    "nodemailer": "^6.4.2"
   }
 }
