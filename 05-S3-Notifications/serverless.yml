@@ -21,6 +21,10 @@ custom:
     port: 8000
     directory: /tmp
 
+package:
+  include:
+    - mailer/**
+
 functions:
   s3_notification:
     handler: handler.s3_notification
