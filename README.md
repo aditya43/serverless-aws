@@ -49,6 +49,7 @@ WIP (Work In Progress)!
 - [NPM Run Serverless Project Locally](#npm-run-serverless-project-locally)
 - [Deploy Serverless Service](#deploy-serverless-service)
 - [Setup Serverless DynamoDB Local](#setup-serverless-dynamodb-local)
+- [Securing APIs](#securing-apis)
 - [Common Issues](#common-issues)
 
 ## License
@@ -303,6 +304,53 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     ```sh
         sls dynamodb install
     ```
+### Securing APIs
+- APIs can be secured using `API Keys`.
+- To generate and use `API Keys` we need to modify `serverless.yml` file:
+    * Add `apiKeys` section under `provider`:
+        ```yml
+            provider:
+                name: aws
+                runtime: nodejs12.x
+                ########################################################
+                apiKeys:                # For securing APIs using API Keys.
+                    - todoAPI           # Provide name for API Key.
+                ########################################################
+                stage: dev              # Stage can be changed while executing deploy command.
+                region: ap-south-1      # Set region.
+                timeout: 300
+        ```
+    * Route by Route, specify whether you want it to be `private` or not. For e.g.
+        ```yml
+            functions:
+                getTodo:    # Secured route.
+                    handler: features/read.getTodo
+                    events:
+                        - http:
+                            path: todo/{id}
+                            method: GET
+                            ########################################################
+                            private: true   # Route secured.
+                            ########################################################
+                listTodos:  # Non-secured route.
+                    handler: features/read.listTodos
+                    events:
+                        - http:
+                            path: todos
+                            method: GET
+        ```
+    * After deploying we will receive `api keys`. Copy it to pass it under headers.
+        ```sh
+            λ serverless offline start
+            Serverless: Starting Offline: dev/ap-south-1.
+            Serverless: Key with token: d41d8cd98f00b204e9800998ecf8427e    # Here is our API Key token.
+            Serverless: Remember to use x-api-key on the request headers
+        ```
+    * Pass `api key` under `x-api-key` header while hitting secured route.
+        ```javascript
+            x-api-key: d41d8cd98f00b204e9800998ecf8427e
+        ```
+    * If a wrong/no value is passed under `x-api-key` header, then we will receive `403 Forbidden` error.
 
 ### Common Issues
 - After running `sls deploy -v`, error: **`The specified bucket does not exist`**:
