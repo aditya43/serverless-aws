@@ -1,0 +1,17 @@
+{
+  "name": "s3-notifications",
+  "version": "1.0.0",
+  "description": "S3 Notifications | Serverless",
+  "main": "handler.js",
+  "scripts": {
+    "dev": "sls offline start --port 3000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Aditya Hajare",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless-offline": "^5.12.1",
+    "serverless-s3-local": "^0.5.4"
+  }
+}

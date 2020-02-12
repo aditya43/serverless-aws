@@ -51,6 +51,7 @@ WIP (Work In Progress)!
 - [Deploy Serverless Service](#deploy-serverless-service)
 - [Setup Serverless DynamoDB Local](#setup-serverless-dynamodb-local)
 - [Securing APIs](#securing-apis)
+- [AWS CLI Handy Commands](#aws-cli-handy-commands)
 - [Common Issues](#common-issues)
 
 ## License
@@ -386,6 +387,25 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
             x-api-key: d41d8cd98f00b204e9800998ecf8427e
         ```
     * If a wrong/no value is passed under `x-api-key` header, then we will receive `403 Forbidden` error.
+
+### AWS CLI Handy Commands
+- Useful commands for project `05-S3-Notifications`:
+    * Setup aws profile for `Serverless S3 Local` plugin:
+        ```sh
+            aws s3 configure --profile s3local
+
+            # Use following credentials:
+            # aws_access_key_id = S3RVER
+            # aws_secret_access_key = S3RVER
+        ```
+    * Trigger S3 event - Put file into local S3 bucket:
+        ```sh
+            aws --endpoint http://localhost:8000 s3api put-object --bucket "aditya-s3-notifications-serverless-project" --key "ssh-config.txt" --body "D:\Work\serverless\05-S3-Notifications\tmp\ssh-config.txt" --profile s3local
+        ```
+    * Trigger S3 event - Delete file from local S3 bucket:
+        ```sh
+            aws --endpoint http://localhost:8000 s3api delete-object --bucket "aditya-s3-notifications-serverless-project" --key "ssh-config.txt" --profile s3local
+        ```
 
 ### Common Issues
 - After running `sls deploy -v`, error: **`The specified bucket does not exist`**:

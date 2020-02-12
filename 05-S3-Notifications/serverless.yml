@@ -12,6 +12,15 @@ provider:
         - s3:*
       Resource: "*"
 
+plugins:
+  - serverless-offline
+  - serverless-s3-local
+
+custom:
+  s3:
+    port: 8000
+    directory: /tmp
+
 functions:
   s3_notification:
     handler: handler.s3_notification
