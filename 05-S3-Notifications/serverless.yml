@@ -28,3 +28,5 @@ functions:
       - s3:
           bucket: aditya-s3-notifications-serverless-project # Don't put an existing bucket name here. Because Lambda function is going to create new bucket.
           event: s3:ObjectCreated:*
+          rules:
+            - suffix: .txt
