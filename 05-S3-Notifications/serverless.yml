@@ -1,0 +1,21 @@
+service: s3-notifications
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: ap-south-1
+  timeout: 300
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: "*"
+
+functions:
+  s3_notification:
+    handler: handler.s3_notification
+    events:
+      - s3:
+          bucket: aditya-s3-notifications-serverless-project # Don't put an existing bucket name here. Because Lambda function is going to create new bucket.
+          event: s3:ObjectCreated:*

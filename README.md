@@ -40,6 +40,7 @@ WIP (Work In Progress)!
 
 ## Important Notes
 - [Setup And Workflow 101](#setup-and-workflow-101)
+- [New Project Setup In Pre Configured Environment 101](#new-project-setup-in-pre-configured-environment-101)
 - [Installing Serverless](#installing-serverless)
 - [Configuring AWS Credentials For Serverless](#configuring-aws-credentials-for-serverless)
 - [Create NodeJS Serverless Service](#create-nodejs-serverless-service)
@@ -168,6 +169,40 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
             handler: /src/cron.handler
             events:
                 - schedule: rate(1 minute)
+    ```
+
+### New Project Setup In Pre Configured Environment 101
+- Browse and open terminal into empty project directory.
+- Execute :
+    ```sh
+        # Create aws nodejs serverless template
+        sls create -t aws-nodejs
+
+        # Init npm.
+        npm init -y
+
+        # Install serverless-offline and serverless-offline-scheduler as dev dependancies.
+        npm i serverless-offline serverless-offline-scheduler --save-dev
+    ```
+- Add following scripts under `package.json`:
+    ```json
+        {
+            "scripts": {
+                "dev": "sls offline start --port 3000",
+                "dynamodb:start": "sls dynamodb start --port 8082",
+            }
+        }
+    ```
+- Open `serverless.yml` and edit `service` name as well as setup `provider`:
+    ```yml
+        service: s3-notifications
+        provider:
+            name: aws
+            runtime: nodejs12.x
+            region: ap-south-1
+        plugins:
+            - serverless-offline    # Add this plugin if you are using it.
+            - serverless-offline-scheduler  # Add this plugin if you are using it.
     ```
 
 ### Installing Serverless
