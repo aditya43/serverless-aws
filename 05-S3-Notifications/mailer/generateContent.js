@@ -5,8 +5,10 @@ module.exports = data => {
         try {
             // timestamp
             const timestamp = `${momentTimeZone.tz('America/Los_Angeles').format('MMMM Do, h:mm:ss a')} PT`;
+
             // subject line
             const subject = `New upload to S3 Bucket: ${data.bucketName}`;
+
             // text body
             const textBody = `
                 Great news!
@@ -25,7 +27,9 @@ module.exports = data => {
                 <p style="line-height: 22px; font-size: 16px;"><i>Your Serverless Function</i></p>
                 </div>
             `;
+
             console.log('Generated content.');
+
             resolve({
                 subject,
                 textBody,
