@@ -1,36 +1,59 @@
 ## About This Project
-AWS Serverless With Node.JS. Technologies:
-- Serverless Framework
-- AWS SAM (Serverless Architecture Model).
-- Lambda.
-- Step Functions.
-- API Gateway.
-- RDS.
-- DynamoDB.
-- ElephantSQL.
-- CloudFormation.
-- CI/CD.
-- CloudWatch.
-- CodeCommit.
-- CodeBuild.
-- CodePipeline.
-- S3 Notifications.
-- SNS.
-- SQS.
-- Cognito.
-- Lambda Crons.
-- CORS.
-- Apache VTL (Velocity Template Language).
-- Swagger.
-- KMS.
-- VPCs.
-- DLQs.
-- CloudFront.
-- OICD.
-- Kinesis.
-- MQTT.
-- IoT.
-- And lot more...
+AWS Serverless With Node.JS.
+
+<table>
+    <tr>
+        <td colspan="4"><b>Technologies Used</b></td>
+    </tr>
+    <tr>
+        <td>Serverless Framework</td>
+        <td>AWS SAM (Serverless Architecture Model)</td>
+        <td>Lambda</td>
+        <td>Step Functions</td>
+    </tr>
+    <tr>
+        <td>API Gateway</td>
+        <td>RDS</td>
+        <td>DynamoDB</td>
+        <td>ElephantSQL</td>
+    </tr>
+    <tr>
+        <td>CloudFormation</td>
+        <td>CI/CD</td>
+        <td>CloudWatch</td>
+        <td>CodeCommit</td>
+    </tr>
+    <tr>
+        <td>CodeBuild</td>
+        <td>CodePipeline</td>
+        <td>S3 Notifications</td>
+        <td>SNS</td>
+    </tr>
+    <tr>
+        <td>SQS</td>
+        <td>Cognito</td>
+        <td>Lambda Crons</td>
+        <td>CORS</td>
+    </tr>
+    <tr>
+        <td>Apache VTL (Velocity Template Language)</td>
+        <td>Swagger</td>
+        <td>KMS</td>
+        <td>VPCs</td>
+    </tr>
+    <tr>
+        <td>DLQs</td>
+        <td>CloudFront</td>
+        <td>OICD</td>
+        <td>Kinesis</td>
+    </tr>
+    <tr>
+        <td>MQTT</td>
+        <td>IoT</td>
+        <td colspan="2"><b>And lot more..</b></td>
+    </tr>
+</table>
+
 
 ## Author
 Aditya Hajare ([Linkedin](https://in.linkedin.com/in/aditya-hajare)).
