@@ -7,7 +7,7 @@ AWS Serverless With Node.JS.
     </tr>
     <tr>
         <td>Serverless Framework</td>
-        <td>AWS SAM (Serverless Architecture Model)</td>
+        <td>AWS SAM</td>
         <td>Lambda</td>
         <td>Step Functions</td>
     </tr>
@@ -36,7 +36,7 @@ AWS Serverless With Node.JS.
         <td>CORS</td>
     </tr>
     <tr>
-        <td>Apache VTL (Velocity Template Language)</td>
+        <td>Apache VTL</td>
         <td>Swagger</td>
         <td>KMS</td>
         <td>VPCs</td>
