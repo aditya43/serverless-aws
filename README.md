@@ -174,6 +174,8 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
                 - schedule: rate(1 minute)
     ```
 
+----------------------------------------
+
 ### New Project Setup In Pre Configured Environment 101
 - Browse and open terminal into empty project directory.
 - Execute :
@@ -208,6 +210,8 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
             - serverless-offline-scheduler  # Add this plugin if you are using it.
     ```
 
+----------------------------------------
+
 ### Installing Serverless
 - To install `Serverless` globally:
     ```sh
@@ -217,6 +221,8 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     ```sh
         sudo chown -R $USER:$(id -gn $USER) /Users/adiinviter/.config
     ```
+
+----------------------------------------
 
 ### Configuring AWS Credentials For Serverless
 - To configure aws user credentials, run:
@@ -229,12 +235,16 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         ~/.aws/credentials
     ```
 
+----------------------------------------
+
 ### Create NodeJS Serverless Service
 - Each service is a combination of multiple `Lambda Functions`.
 - To create `NodeJS Serverless Service`:
     ```sh
         sls create --t aws-nodejs
     ```
+
+----------------------------------------
 
 ### Invoke Lambda Function Locally
 - To invoke a `Lambda Function` locally:
@@ -245,6 +255,8 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         # Example
         sls invoke local -f myfunct
     ```
+
+----------------------------------------
 
 ### Event - Passing Data To Lambda Function
 - To pass data to lambda function,
@@ -287,6 +299,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
             };
         ```
 
+----------------------------------------
 
 ### Serverless Offline
 - For **local development only**, use `Serverless Offline` plugin.
@@ -299,6 +312,8 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     ```sh
         npm i serverless-offline --save-dev
     ````
+
+----------------------------------------
 
 ### NPM Run Serverless Project Locally
 - Install [Serverless Offline](#serverless-offline) plugin.
@@ -316,12 +331,16 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         npm run dev
     ```
 
+----------------------------------------
+
 ### Deploy Serverless Service
 - To deploy serverless service, run:
     ```sh
         # -v: For verbose.
         sls deploy -v
     ```
+
+----------------------------------------
 
 ### Setup Serverless DynamoDB Local
 - Use following plugin to setup DynamoDB locally (for offline uses):
@@ -342,6 +361,9 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     ```sh
         sls dynamodb install
     ```
+
+----------------------------------------
+
 ### Securing APIs
 - APIs can be secured using `API Keys`.
 - To generate and use `API Keys` we need to modify `serverless.yml` file:
@@ -390,6 +412,8 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         ```
     * If a wrong/no value is passed under `x-api-key` header, then we will receive `403 Forbidden` error.
 
+----------------------------------------
+
 ### AWS CLI Handy Commands
 - Useful commands for project `05-S3-Notifications`:
     * Setup aws profile for `Serverless S3 Local` plugin:
@@ -408,6 +432,8 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         ```sh
             aws --endpoint http://localhost:8000 s3api delete-object --bucket "aditya-s3-notifications-serverless-project" --key "ssh-config.txt" --profile s3local
         ```
+
+----------------------------------------
 
 ### Common Issues
 - After running `sls deploy -v`, error: **`The specified bucket does not exist`**:
