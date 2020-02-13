@@ -50,10 +50,13 @@ AWS Serverless With Node.JS.
     <tr>
         <td>MQTT</td>
         <td>IoT</td>
-        <td colspan="2"><b>And lot more..</b></td>
+        <td>Elastic Beanstalk</td>
+        <td>ElastiCache</td>
     </tr>
 </table>
-
+```diff
++ And lot more..
+```
 
 ## Author
 Aditya Hajare ([Linkedin](https://in.linkedin.com/in/aditya-hajare)).
