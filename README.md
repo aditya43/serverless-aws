@@ -1,14 +1,14 @@
 ## About This Project
 AWS Serverless With Node.JS.
 
+```diff
+- Technologies Used :
+```
 <table>
-    <tr>
-        <td colspan="4"><b>Technologies Used</b></td>
-    </tr>
     <tr>
         <td>Serverless Framework</td>
         <td>AWS SAM</td>
-        <td>Lambda</td>
+        <td>AWS Lambda</td>
         <td>Step Functions</td>
     </tr>
     <tr>
