@@ -1,5 +1,5 @@
 ## About This Project
-AWS Serverless With Node.JS.
+Serverless Framework with AWS & Node.JS..
 
 ```diff
 - Technologies Used :
