@@ -112,6 +112,23 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - `Invocation Type` of AWS Lambda depends on the `Event Source`. For e.g.
     * `API Gateway` or `Cognito` event is `Synchronous`.
     * `S3 Event` is always `Asynchronous`.
+- `pathParameters` and `queryStringParameters` are the pre-defined attributes of `API Gateway AWS Proxy Event`.
+- `AWS API Gateway` expects Lambda function to return `well formed http response` instead of just the data or just the response body. At the bare-minimum, our response must have `statusCode` and `body`. For e.g.
+    ```json
+        {
+            "statusCode" : 200,
+            "body": {
+                "message": "Hello Aditya"
+            }
+        }
+    ```
+- Typical code to build above response:
+    ```javascript
+        return {
+            statusCode: 200,
+            body: JSON.stringify({message: "Hello Aditya"});
+        }
+    ```
 
 ----------------------------------------
 
