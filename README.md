@@ -105,6 +105,13 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - We are charged only for the time our `Lambda Functions` are executing.
 - No charge for `Idle Time`.
 - Billing is done in increments of `100 ms` of the `Compute Time`.
+- `AWS Lambda` uses decoupled `Permissions Model`.
+- `AWS Lambda` supports 2 `Invocation Types`:
+    * **Synchronous**.
+    * **Asynchronous**.
+- `Invocation Type` of AWS Lambda depends on the `Event Source`. For e.g.
+    * `API Gateway` or `Cognito` event is `Synchronous`.
+    * `S3 Event` is always `Asynchronous`.
 
 ----------------------------------------
 
