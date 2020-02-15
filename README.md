@@ -66,6 +66,7 @@ Aditya Hajare ([Linkedin](https://in.linkedin.com/in/aditya-hajare)).
 WIP (Work In Progress)!
 
 ## Important Notes
+- [Theory](#theory)
 - [Setup And Workflow 101](#setup-and-workflow-101)
 - [New Project Setup In Pre Configured Environment 101](#new-project-setup-in-pre-configured-environment-101)
 - [Installing Serverless](#installing-serverless)
@@ -83,6 +84,27 @@ WIP (Work In Progress)!
 
 ## License
 Open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+----------------------------------------
+
+### Theory
+- `Serverless Computing` is a cloud computing execution model in which the cloud provider dynamically manages the allocation of infrastructure resources. So we don't have to worry about managing the servers or any of the infrastructure.
+- `AWS Lambda` is an `Event Driven` serverless computing platform or a `Compute Service` provided by AWS.
+- The code that we run on `AWS Lambda` is called a `Lambda Function`.
+- `Lambda Function` executes whenever it is triggered by a pre-configured `Event Source`.
+- `Lambda Functions` can be triggered by numerous event sources like:
+    * API Gateway.
+    * S3 File Uploads.
+    * Changes to `DynamoDB` table data.
+    * `CloudWatch` events.
+    * `SNS` Notifications.
+    * Third Party APIs.
+    * `IoT Devices`.
+    * And so on..
+- `Lambda Functions` run in `Containerized Environments`.
+- We are charged only for the time our `Lambda Functions` are executing.
+- No charge for `Idle Time`.
+- Billing is done in increments of `100 ms` of the `Compute Time`.
 
 ----------------------------------------
 
