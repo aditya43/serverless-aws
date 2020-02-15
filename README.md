@@ -67,6 +67,7 @@ WIP (Work In Progress)!
 
 ## Important Notes
 - [Theory](#theory)
+- [AWS Lambda Limits](#aws-lambda-limits)
 - [Setup And Workflow 101](#setup-and-workflow-101)
 - [New Project Setup In Pre Configured Environment 101](#new-project-setup-in-pre-configured-environment-101)
 - [Installing Serverless](#installing-serverless)
@@ -129,6 +130,28 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
             body: JSON.stringify({message: "Hello Aditya"});
         }
     ```
+
+----------------------------------------
+
+### AWS Lambda Limits
+| Resource | Default Limit |
+| --- | --- |
+| Concurrent executions | 1,000 |
+| Function and layer storage | 75 GB |
+| Elastic network interfaces per VPC | 250 |
+| Function memory allocation | 128 MB to 3,008 MB, in 64 MB increments. |
+| Function timeout | 900 seconds (15 minutes) |
+| Function environment variables | 4 KB |
+| Function resource-based policy | 20 KB |
+| Function layers | 5 layers |
+| Function burst concurrency | 500 - 3000 (varies per region) |
+| Invocation frequency (requests per second) |  10 x concurrent executions limit (synchronous – all sources) 10 x concurrent executions limit (asynchronous – non-AWS sources) Unlimited (asynchronous – AWS service sources  |
+| Invocation payload (request and response) |  6 MB (synchronous) 256 KB (asynchronous)  |
+| Deployment package size |  50 MB (zipped, for direct upload) 250 MB (unzipped, including layers) 3 MB (console editor)  |
+| Test events (console editor) | 10 |
+| `/tmp` directory storage | 512 MB |
+| File descriptors | 1,024 |
+| Execution processes/threads | 1,024 |
 
 ----------------------------------------
 
