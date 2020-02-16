@@ -184,6 +184,13 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         - May or may not reflect the latest copy of data.
         - This is the default consistency for all operations.
         - 50% Cheaper than `Strongly Consistent Read` operation.
+- Internally, DynamoDB stores data in `Partitions`.
+- `Partitions` are nothing but `Blocks of memory`.
+- A table can have `1 or more partitions` depending on it's size and throughput.
+- Each `Partition` in DynamoDB can hold maximum `10GB` of data.
+- Partitioning e.g.:
+    * For `500 RCU and 500 WCU` ---> `1 Partition`.
+    * For `1000 RCU and 1000 WCU` ---> `2 Partitions`.
 
 ----------------------------------------
 
