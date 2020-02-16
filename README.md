@@ -176,6 +176,14 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - `Maps` are unordered collection of `Key-Value` pairs.
     * Ideal for storing JSON documents in DynamoDB.
     * Can have multiple data types.
+- DynamoDB supports 2 types of `Read Operations (Read Consistency)`:
+    * `Strong Consistency`:
+        - The most up-to-date data.
+        - Must be requested explicitely.
+    * `Eventual Consistency`:
+        - May or may not reflect the latest copy of data.
+        - This is the default consistency for all operations.
+        - 50% Cheaper than `Strongly Consistent Read` operation.
 
 ----------------------------------------
 
