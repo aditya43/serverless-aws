@@ -165,6 +165,12 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         - For e.g. String Set, Number Set and Binary Set.
     * **Document**: Represents complex structure with nested attributes.
         - Fo e.g. List and Map.
+- `String` datatype can store only `non-empty` values.
+- Maximum data for any item in DynamoDB is limited to `400kb`. Note: Item represents the entire row (like in RDBMS) of data.
+- `Sets` are unordered collection of either Strings, Numbers or Binary values.
+    * All values must be of same scaler type.
+    * Do not allow duplicate values.
+    * No empty sets allowed.
 
 ----------------------------------------
 
