@@ -173,6 +173,8 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     * No empty sets allowed.
 - `Lists` are ordered collection of values.
     * Can have multiple data types.
+- `Maps` are unordered collection of `Key-Value` pairs.
+    * Ideal for storing JSON documents in DynamoDB.
 
 ----------------------------------------
 
