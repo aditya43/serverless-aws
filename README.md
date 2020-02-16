@@ -171,6 +171,8 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     * All values must be of same scaler type.
     * Do not allow duplicate values.
     * No empty sets allowed.
+- `Lists` are ordered collection of values.
+    * Can have multiple data types.
 
 ----------------------------------------
 
