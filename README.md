@@ -68,6 +68,7 @@ WIP (Work In Progress)!
 ## Important Notes
 - [Theory](#theory)
 - [AWS Lambda Limits](#aws-lambda-limits)
+- [DynamoDB](#dynamodb)
 - [Setup And Workflow 101](#setup-and-workflow-101)
 - [New Project Setup In Pre Configured Environment 101](#new-project-setup-in-pre-configured-environment-101)
 - [Installing Serverless](#installing-serverless)
@@ -152,6 +153,18 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 | `/tmp` directory storage | 512 MB |
 | File descriptors | 1,024 |
 | Execution processes/threads | 1,024 |
+
+----------------------------------------
+
+### DynamoDB
+- Datatypes:
+    * **Scaler**: Represents exactly one value.
+        - For e.g. String, Number, Binary, Boolean, null.
+        - `Keys` or `Index` attributes only support String, Number and Binary scaler types.
+    * **Set**: Represents multiple Scaler values.
+        - For e.g. String Set, Number Set and Binary Set.
+    * **Document**: Represents complex structure with nested attributes.
+        - Fo e.g. List and Map.
 
 ----------------------------------------
 
