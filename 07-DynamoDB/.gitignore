@@ -1,0 +1,17 @@
+**/jspm_packages
+**/node_modules
+**/.env
+**/prod.env
+**/npm-debug.log
+**/package-lock.json
+**/.vscode
+**/vendor
+#**/public
+**/Homestead.yaml
+**/Homestead.json
+**/.idea
+**/.vagrant
+
+# Serverless directories
+**/.serverless
+**/.dynamodb
