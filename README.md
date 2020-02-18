@@ -233,7 +233,12 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - Conditional writes in DynamoDB are `idempotent`. i.e. If we make same conditional write requests multiple times, only the first request will be considered.
 - `document.query()` allows us to fetch items from a specific `partition`.
 - `document.scan()` allows us to fetch items from all `partitions`.
-- At a time, any `document.query()` or `document.scan()` operation can return maximum `1mb` data.
+- **Pagination**:
+    * At a time, any `document.query()` or `document.scan()` operation can return maximum `1mb` data in a single request.
+    * If our `query/scan` operation has more records to return (after exceeding 1mb limit), we will receive `LastEvaluatedKey` key in the response.
+    * `LastEvaluatedKey` is simply an object containing `Index Attribute` of the next item up which the response was returned.
+    * In order to retrieve further records, we must pass `LastEvaluatedKey` value under `ExclusiveStartKey` attribute in our subsequent query.
+    * If there is no `LastEvaluatedKey` attribute present in DynamoDB query/scan response, it means we have reached the last page of response.
 
 ----------------------------------------
 
