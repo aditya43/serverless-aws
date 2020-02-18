@@ -7,7 +7,7 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 docClient.update({
     TableName: 'adi_notes_app',
     Key: {
-        user_id: 'test123',
+        user_id: 'test1111',
         timestamp: 1
     },
     UpdateExpression: 'set #t = :t',

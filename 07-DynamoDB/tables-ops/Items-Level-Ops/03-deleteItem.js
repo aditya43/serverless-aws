@@ -7,7 +7,7 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 docClient.delete({
     TableName: 'adi_notes_app',
     Key: {
-        user_id: 'test123',
+        user_id: 'test1111',
         timestamp: 1
     }
 }, (err, data) => {

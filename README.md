@@ -229,6 +229,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
             }
         });
     ```
+- `batchWrite()` method allows us to perform multiple write operations (e.g. Put, Update, Delete) in one go.
 
 ----------------------------------------
 

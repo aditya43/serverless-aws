@@ -7,10 +7,10 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 docClient.put({
     TableName: 'adi_notes_app',
     Item: {
-        user_id: 'test123',
+        user_id: 'test1111',
         timestamp: 1,
-        title: 'Test Note',
-        content: 'Test Note Content..'
+        title: 'Test Note 1111',
+        content: 'Test Note 1111 Content..'
     }
 }, (err, data) => {
     if (err) {
