@@ -231,6 +231,8 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     ```
 - `batchWrite()` method allows us to perform multiple write operations (e.g. Put, Update, Delete) in one go.
 - Conditional writes in DynamoDB are `idempotent`. i.e. If we make same conditional write requests multiple times, only the first request will be considered.
+- `document.query()` allows us to fetch items from a specific `partition`.
+- `document.scan()` allows us to fetch items from all `partitions`.
 
 ----------------------------------------
 
