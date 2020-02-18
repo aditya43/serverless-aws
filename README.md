@@ -233,6 +233,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - Conditional writes in DynamoDB are `idempotent`. i.e. If we make same conditional write requests multiple times, only the first request will be considered.
 - `document.query()` allows us to fetch items from a specific `partition`.
 - `document.scan()` allows us to fetch items from all `partitions`.
+- At a time, any `document.query()` or `document.scan()` operation can return maximum `1mb` data.
 
 ----------------------------------------
 
