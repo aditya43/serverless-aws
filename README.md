@@ -191,6 +191,21 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - Partitioning e.g.:
     * For `500 RCU and 500 WCU` ---> `1 Partition`.
     * For `1000 RCU and 1000 WCU` ---> `2 Partitions`.
+- For `Table` level operations, we need to instantiate and use `DynamoDB` class from `aws-sdk`:
+    ```javascript
+        const AWS = require('aws-sdk');
+        AWS.config.update({ region: 'ap-south-1' });
+
+        const dynamoDB = new AWS.DynamoDB(); // Instantiating DynamoDB class for table level operations.
+
+        dynamoDB.listTables({}, (err, data) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(JSON.stringify(data, null, 2));
+            }
+        });
+    ```
 
 ----------------------------------------
 
