@@ -8,6 +8,6 @@ dynamoDB.listTables({}, (err, data) => {
     if (err) {
         console.log(err);
     } else {
-        console.log(data);
+        console.log(JSON.stringify(data, null, 2));
     }
 });
