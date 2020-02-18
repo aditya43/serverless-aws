@@ -206,6 +206,29 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
             }
         });
     ```
+- For `Item` level operations, we need to instantiate and use `DocumentClient` from `DynamoDB` class from `aws-sdk`:
+    ```javascript
+        const AWS = require('aws-sdk');
+        AWS.config.update({ region: 'ap-south-1' });
+
+        const docClient = new AWS.DynamoDB.DocumentClient(); // Instantiate and use DocumentClient class for Item level operations.
+
+        docClient.put({
+            TableName: 'adi_notes_app',
+            Item: {
+                user_id: 'test123',
+                timestamp: 1,
+                title: 'Test Note',
+                content: 'Test Note Content..'
+            }
+        }, (err, data) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(JSON.stringify(data, null, 2));
+            }
+        });
+    ```
 
 ----------------------------------------
 
