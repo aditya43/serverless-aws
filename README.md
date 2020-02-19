@@ -238,7 +238,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     * If our `query/scan` operation has more records to return (after exceeding 1mb limit), we will receive `LastEvaluatedKey` key in the response.
     * `LastEvaluatedKey` is simply an object containing `Index Attribute` of the next item up which the response was returned.
     * In order to retrieve further records, we must pass `LastEvaluatedKey` value under `ExclusiveStartKey` attribute in our subsequent query.
-    * If there is no `LastEvaluatedKey` attribute present in DynamoDB query/scan response, it means we have reached the last page of response.
+    * If there is no `LastEvaluatedKey` attribute present in DynamoDB query/scan response, it means we have reached the last page of data.
 
 ----------------------------------------
 
