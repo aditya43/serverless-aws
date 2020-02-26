@@ -131,6 +131,10 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
             body: JSON.stringify({message: "Hello Aditya"});
         }
     ```
+- **Lambda Versioning:**
+    * When we don't explicitely create an user version, Lambda will use the `$LATEST` version.
+    * The latest version is always denoted by `$LATEST`.
+    * The last edited version is always marked as `$LATEST` one.
 
 ----------------------------------------
 
