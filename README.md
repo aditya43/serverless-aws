@@ -153,7 +153,30 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - **Need for Lambda Aliases:**
     * Without `Lambda Aliases`, whenever we publish a new `Lambda Version`, we will manually have to edit API Gateway to use new `Lambda Version` and then republish the API (Refer to above steps).
     * Everytime we publish a new `Lambda Version`, `API Gateway` should automatically pick up the change without we having to re-deploy the API. `Lambda Aliases` helps us achive this.
+- **Lambda Aliases:**
+    * It's a good practice to create 1 `Lambda Alias` per `Environment`. For e.g. We could have aliases for dev, production, stage etc. environments.
+    * While configuring `Lambda Alias`, we can use `Additional Version` setting for `Split Testing`.
+    * `Split Testing` allows us to split user traffic between multiple `Lambda Versions`.
+    * To use `Lambda Alias` in `API Gateway`, we simply have to replace `Version Number` (Seperated by colon) under `Lambda Function` setting (in `API Gateway` settings), with an `Alias`.
+    * Re-deploy the API.
+    * For e.g.
+        ```javascript
+            // Lambda Function name: adiTest
+            // Available Lambda Function versions: v1, v2, v3 ..etc.
+            // Available Lambda Function aliases: dev, stage, prod ..etc.
 
+            // Aliases are pointing to following Lambda versions:
+            {
+                "dev": "v1",
+                "stage": "v2",
+                "prod": "$LATEST"
+            }
+
+            // To use v2 for API Gateway GET Request, set Lambda Function value as below:
+            {
+                "Lambda Function": "adiTest:stage"
+            }
+        ```
 ----------------------------------------
 
 ### AWS Lambda Limits
