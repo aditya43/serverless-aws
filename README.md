@@ -140,7 +140,8 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     2. Click on `Request (GET/POST/PUT/PATCH/DELETE)` under `Resource`.
     3. Click on `Integration Request`.
     4. Configure `Lambda Function` setting with a value of version seperated by colon.
-    5. For e.g.
+    5. Re-deploy the API.
+    6. For e.g.
         ```javascript
             // Lambda Function name: adiTest
             // Available Lambda Function versions: v1, v2, v3 ..etc.
