@@ -135,6 +135,20 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     * When we don't explicitely create an user version, Lambda will use the `$LATEST` version.
     * The latest version is always denoted by `$LATEST`.
     * The last edited version is always marked as `$LATEST` one.
+- **How to use different version of Lambda Function in API Gateway?**
+    1. Under AWS Console, go to `API Gateway`.
+    2. Click on `Request (GET/POST/PUT/PATCH/DELETE)` under `Resource`.
+    3. Click on `Integration Request`.
+    4. Configure `Lambda Function` setting with a value of version seperated by colon.
+    5. For e.g.
+        ```javascript
+            // Lambda Function name: adiTest
+            // Available Lambda Function versions: v1, v2, v3 ..etc.
+            // To use v2 for API Gateway GET Request, set Lambda Function value as below:
+            {
+                "Lambda Function": "adiTest:2"
+            }
+        ```
 
 ----------------------------------------
 
