@@ -135,7 +135,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     * When we don't explicitely create an user version, Lambda will use the `$LATEST` version.
     * The latest version is always denoted by `$LATEST`.
     * The last edited version is always marked as `$LATEST` one.
-- **How to use different version of Lambda Function in API Gateway?**
+- **(Without using Lambda Aliases) How to use different version of Lambda Function in API Gateway? Bad Way!**
     1. Under AWS Console, go to `API Gateway`.
     2. Click on `Request (GET/POST/PUT/PATCH/DELETE)` under `Resource`.
     3. Click on `Integration Request`.
@@ -150,6 +150,9 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
                 "Lambda Function": "adiTest:2"
             }
         ```
+- **Need for Lambda Aliases:**
+    * Without `Lambda Aliases`, whenever we publish a new `Lambda Version`, we will manually have to edit API Gateway to use new `Lambda Version` and then republish the API (Refer to above steps).
+    * Everytime we publish a new `Lambda Version`, `API Gateway` should automatically pick up the change without we having to re-deploy the API. `Lambda Aliases` helps us achive this.
 
 ----------------------------------------
 
