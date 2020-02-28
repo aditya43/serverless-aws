@@ -194,6 +194,11 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
                 "Lambda Function": "myFunction:${stageVariables.variableName}"
             }
         ```
+- **Canary Deployment:**
+    * Related to `API Gateways`.
+    * Used for traffic splitting between different versions in `API Gateways`.
+    * Use `Promote Canary` option to direct all traffic to latest version once our testing using traffic splitting is done.
+    * After directing all traffic to latest version using `Promote Canary` option, we can choose to `Delete Canary` once we are sure.
 
 ----------------------------------------
 
