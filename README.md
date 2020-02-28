@@ -90,6 +90,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 ----------------------------------------
 
 ### Theory
+- `Tags` are useful for organising and tracking our billing.
 - `Serverless Computing` is a cloud computing execution model in which the cloud provider dynamically manages the allocation of infrastructure resources. So we don't have to worry about managing the servers or any of the infrastructure.
 - `AWS Lambda` is an `Event Driven` serverless computing platform or a `Compute Service` provided by AWS.
 - The code that we run on `AWS Lambda` is called a `Lambda Function`.
@@ -199,6 +200,16 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     * Used for traffic splitting between different versions in `API Gateways`.
     * Use `Promote Canary` option to direct all traffic to latest version once our testing using traffic splitting is done.
     * After directing all traffic to latest version using `Promote Canary` option, we can choose to `Delete Canary` once we are sure.
+- **Encryption For Environment Variables In Lambda:**
+    * By default `Lambda` uses default `KMS` key to encrypt `Environment Variables`.
+    * `AWS Lambda` has built-in encryption at rest and it's enabled by default.
+    * When our `Lambda` uses `Environment Variables` they are automatically encrypted by `Default KMS Key`.
+    * When the `Lambda` function is invoked, `Environment Variables` are automatically `decrypted` and made available in `Lambda Function's code`.
+    * However, this only takes care of `Encryption at rest`. But during `Transit` for e.g. when we are deploying the `Lambda Function`, these `Environment Variables` are still transferred in `Plain Text`.
+    * So, if `Environment Variables` posses sensitive information, we can enable `Encryption in transit`.
+    * If we enable `Encryption in transit` then `Environment Variable Values` will be masked using `KMS Key` and we must decrypt it's contents inside `Lambda Functions` to get the actual values stored in variables.
+    * While creating `KMS Keys`, be sure to choose the `Region` same as our `Lambda Function's Region`.
+    * Make sure to give our `Lambda Function's Role` a permission to use `KMS Key` feature inside `KMS Key's` policy.
 
 ----------------------------------------
 
