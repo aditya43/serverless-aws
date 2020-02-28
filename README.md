@@ -177,6 +177,24 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
                 "Lambda Function": "adiTest:stage"
             }
         ```
+- **Stage Variables in API Gateway:**
+    * Everytime we make changes to `API Gateway`, we don't want to update the `Alias Name` in every `Lambda Function` before deploying the corrosponding `Stage`. To address this challenge, we can make use of what is called as `Stage Variables in API Gateway`.
+    * `Stage Variables` can be used for various puposes like:
+        - Choosing backend database tables based on environment.
+        - For dynamically choosing `Lambda Alias` corrosponding to the current `Stage`.
+        - Or any other configuration.
+    * `Stage Variables` are available inside `context` object of `Lambda Function`.
+    * Since `Stage Variables` are available inside `context` object, we can also use them in `Body Mapping Templates`.
+    * `Stage Variables` can be used as follows:
+        - Inside `API Gateway Resource Configuration`, to choose `Lambda Function Alias` corrosponding to the current stage:
+        ```javascript
+            // Use ${stageVariables.variableName}
+
+            {
+                "Lambda Function": "myFunction:${stageVariables.variableName}"
+            }
+        ```
+
 ----------------------------------------
 
 ### AWS Lambda Limits
