@@ -90,6 +90,12 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 ----------------------------------------
 
 ### Theory
+- Every AWS account comes with a default `VPC (Virtual Private Cloud)`.
+- There could be different reasons why you may want to restrict your `Lambda Function` to run within a given `VPC`. For e.g.
+    * You may have an `Amazon RDS` instance running on `EC2` inside your `VPC` and you want to connect to that instance through `Lambda` without exposing it to outside world. In that case, your `Lambda Function` must run inside that `VPC`.
+    * When a `Lambda Function` is attached to any `VPC`, it automatically loses access to the internet. Unless ofcourse you open a `Port` on your `VPC Security Group` to allow `Outbound Connections`.
+    * While attaching `Lambda Function` to `VPC`, we must select at least 2 `Subnets`. Although we can choose more `Subnets` if we like.
+    * When we are using `Serverless Framework`, all this is taken care of implicitely.
 - `Tags` are useful for organising and tracking our billing.
 - `Serverless Computing` is a cloud computing execution model in which the cloud provider dynamically manages the allocation of infrastructure resources. So we don't have to worry about managing the servers or any of the infrastructure.
 - `AWS Lambda` is an `Event Driven` serverless computing platform or a `Compute Service` provided by AWS.
