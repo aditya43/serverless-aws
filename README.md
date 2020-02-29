@@ -216,6 +216,18 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     * If we enable `Encryption in transit` then `Environment Variable Values` will be masked using `KMS Key` and we must decrypt it's contents inside `Lambda Functions` to get the actual values stored in variables.
     * While creating `KMS Keys`, be sure to choose the `Region` same as our `Lambda Function's Region`.
     * Make sure to give our `Lambda Function's Role` a permission to use `KMS Key` feature inside `KMS Key's` policy.
+- **Retry Behavior in AWS Lambda:**
+    * `Lambda Functions` have built-in `Retry Behavior`. i.e. When a `Lambda Functions` fails, `AWS Lambda` automatically attempts to retry the execution up to **`2 Times`** if it was invoked `Asynchronously (Push Events)`.
+    * A lambda function could fail for different reasons such as:
+        - Logical or Syntactical error in Lambda Function's code.
+        - Network outage.
+        - A lambda function could hit the timeout.
+        - A lambda function run out of memory.
+        - And so on..
+    * When any of above things happen, Lambda function will throw an `Exception`. How this `Exception` is handled depends upon how the `Lambda Function` was invoked i.e. `Synchronously or Asynchronously (Push Events)`.
+    * If the `Lambda Function` was invoked `Asynchronously (Push Events)` then `AWS Lambda` will automatically retry up to `2 Times (With some time delays in between)` on execution failure.
+    * If we configure a `DLQ (Dead Letter Queue)`, it will collect the `Payload` after subsequent retry failures i.e. after `2 Attempts`.
+    * If a function was invoked `Synchronously` then calling application will receive `HTTP 429` error when function execution fails.
 
 ----------------------------------------
 
