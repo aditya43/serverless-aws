@@ -229,6 +229,23 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     * If we configure a `DLQ (Dead Letter Queue)`, it will collect the `Payload` after subsequent retry failures i.e. after `2 Attempts`.
     * If a function was invoked `Synchronously` then calling application will receive `HTTP 429` error when function execution fails.
     * If a `DLQ (Dead Letter Queue)` is not configured for `Lambda Function`, it will discard the event after 2 retry attempts.
+- **Container Reuse:**
+    * `Lambda Function` executes in `Containerized Environments`.
+    * Whenever we create or update a `Lambda Function` i.e. either the function code or configuration, `AWS Lambda` creates a new `Container`.
+    * Whenever `Lambda Function` is executed first time i.e. after we create it or update, `AWS Lambda` creates a new `Container`.
+    * Once the `Lambda Function` execution is finished, `AWS Lambda` will shut down the `Container` after a while.
+    * Code written outside `Lambda Handler` will be executed once per `Container`. For e.g.
+        ```javascript
+            // Below code will be executed once per container.
+            const AWS = require('aws-sdk);
+            AWS.config.update({ region: 'ap-south-1' });
+            const s3 = new AWS.S3();
+
+            // Below code (code inside Lambda handler) will be executed everytime Lambda Function is invoked.
+            exports.handler = async (event, context) => {
+                return "Hello Aditya";
+            };
+        ```
 
 ----------------------------------------
 
