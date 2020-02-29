@@ -228,6 +228,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     * If the `Lambda Function` was invoked `Asynchronously (Push Events)` then `AWS Lambda` will automatically retry up to `2 Times (With some time delays in between)` on execution failure.
     * If we configure a `DLQ (Dead Letter Queue)`, it will collect the `Payload` after subsequent retry failures i.e. after `2 Attempts`.
     * If a function was invoked `Synchronously` then calling application will receive `HTTP 429` error when function execution fails.
+    * If a `DLQ (Dead Letter Queue)` is not configured for `Lambda Function`, it will discard the event after 2 retry attempts.
 
 ----------------------------------------
 
