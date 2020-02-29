@@ -252,7 +252,6 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     * We do not have any control over when `AWS Lambda` will reuse the `Container` or when it won't.
     * If we are spawning any background processes in `Lambda Functions`, they will be executed only until `Lambda Handler` returns a response. Other time they will stay `Frozen`.
 - **Running a `Lambda Function` inside a `VPC` will result in `Cold Starts`. `VPC` also introduce some delay before a function could execute which could result in `Cold Start`.**
-- **`Resource Policies`** gets applied at the `API Gateway` level whereas **`IAM Policies`** gets applied at the `User/Client` level.
 
 ----------------------------------------
 
