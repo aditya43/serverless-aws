@@ -246,6 +246,11 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
                 return "Hello Aditya";
             };
         ```
+    * It's a good practice to write all initialisation code outside the `Lambda Handler`.
+    * If you have written any file in `\tmp` and a `Container` is reused for `Lambda Function Execution`, that file will be available in subsequent invocations.
+    * It will result in faster executions whenever `Containers` are reused.
+    * We do not have any control over when `AWS Lambda` will reuse the `Container` or when it won't.
+    * If we are spawning any background processes in `Lambda Functions`, they will be executed only until `Lambda Handler` returns a response. Other time they will stay `Frozen`.
 
 ----------------------------------------
 
