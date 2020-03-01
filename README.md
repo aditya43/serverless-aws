@@ -361,6 +361,16 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     * `LastEvaluatedKey` is simply an object containing `Index Attribute` of the next item up which the response was returned.
     * In order to retrieve further records, we must pass `LastEvaluatedKey` value under `ExclusiveStartKey` attribute in our subsequent query.
     * If there is no `LastEvaluatedKey` attribute present in DynamoDB query/scan response, it means we have reached the last page of data.
+- **DynamoDB Streams:**
+    * In simple words, its a `24 Hours Time-ordered Log`.
+    * `DynamoDB Streams` maintain a `Time-Ordered Log` of all changes in a given `DynamoDB Table`.
+    * This log stores all the `Write Activity` that took place in the last `24 hrs`.
+    * Whenever there are any changes made into `DynamoDB Table` and if `DynamoDB Stream` is enabled for that table, these changes will be returned to the `Streams`.
+    * There are several ways to consume and process data from `DynamoDB Streams`:
+        - We can use `Kinesis Adapter` along with `Kinesis Client Library`. `Kinesis` is platform for processing `High Volume` streaming data on `AWS`.
+        - We can also make use of `DynamoDB Streams SDK` to work with `DynamoDB Streams`.
+        - `AWS Lambda Triggers` also allows us to work with `DynamoDB Streams`. This approach is much easy and intuitive. `DynamoDB Streams` will invoke `Lambda Functions` based on changes received by them.
+
 
 ----------------------------------------
 
