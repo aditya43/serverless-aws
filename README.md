@@ -69,6 +69,7 @@ WIP (Work In Progress)!
 - [Theory](#theory)
 - [AWS Lambda Limits](#aws-lambda-limits)
 - [DynamoDB](#dynamodb)
+- [AWS Step Functions](#aws-step-functions)
 - [Setup And Workflow 101](#setup-and-workflow-101)
 - [New Project Setup In Pre Configured Environment 101](#new-project-setup-in-pre-configured-environment-101)
 - [Installing Serverless](#installing-serverless)
@@ -91,6 +92,9 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 
 ### Theory
 - Every AWS account comes with a default `VPC (Virtual Private Cloud)`.
+- At the moment, `AWS Lambda Function` can run upto a maximum of `15 Minutes`.
+- A `Step Function` can run upto a maximum period of `1 Year`.
+- **`Step Functions` allows us to combine different `Lambda Functions` to build `Serverless Applications` and `Microservices`.**
 - There could be different reasons why you may want to restrict your `Lambda Function` to run within a given `VPC`. For e.g.
     * You may have an `Amazon RDS` instance running on `EC2` inside your `VPC` and you want to connect to that instance through `Lambda` without exposing it to outside world. In that case, your `Lambda Function` must run inside that `VPC`.
     * When a `Lambda Function` is attached to any `VPC`, it automatically loses access to the internet. Unless ofcourse you open a `Port` on your `VPC Security Group` to allow `Outbound Connections`.
@@ -371,6 +375,20 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         - We can also make use of `DynamoDB Streams SDK` to work with `DynamoDB Streams`.
         - `AWS Lambda Triggers` also allows us to work with `DynamoDB Streams`. This approach is much easy and intuitive. `DynamoDB Streams` will invoke `Lambda Functions` based on changes received by them.
 
+----------------------------------------
+
+### AWS Step Functions
+- `AWS Step Functions` are the logical progression of `AWS Lambda Functions`.
+- With `Step Functions` we can create visual workflows to co-ordinate or orchestrate different `Lambda Functions` to work together.
+- A `Step Function` can run upto a maximum period of `1 Year`.
+- We can use `Step Functions` to automate routine jobs like deployments, upgrades, migrations, patches and so on.
+- **`Step Functions` allows us to combine different `Lambda Functions` to build `Serverless Applications` and `Microservices`.**
+- Just like `Lambda Functions`, there is no need to provision any resources or infrastructure to `Step Functions`.
+- We simply use `ASL (Amazon Step Language)` to define the workflows. It's a JSON based structured language. We use this language to define various steps as well as different connections and interactions between these steps in `Step Functions`.
+- **The resulting workflow is called as the `State Machine`.**
+- `State Machine` is displayed in a graphical form just like a flowchart.
+- `State Machines` also has built-in error handling mechanisms. We can retry operations based on different errors or conditions.
+- Billing is on `Pay as you go` basis. **We only pay for the trasitions between `Steps`.**
 
 ----------------------------------------
 
