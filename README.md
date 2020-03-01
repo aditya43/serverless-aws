@@ -389,6 +389,8 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - `State Machine` is displayed in a graphical form just like a flowchart.
 - `State Machines` also has built-in error handling mechanisms. We can retry operations based on different errors or conditions.
 - Billing is on `Pay as you go` basis. **We only pay for the trasitions between `Steps`.**
+- `task` step allows us to invoke `Lambda Function` from our `State Machine`
+- `activity` step allows us to run any code on `EC2 Instances`. It is similar to `task` step just that `activity` step is not `Serverless` kind of step.
 
 ----------------------------------------
 
