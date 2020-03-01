@@ -391,6 +391,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - Billing is on `Pay as you go` basis. **We only pay for the trasitions between `Steps`.**
 - `task` step allows us to invoke `Lambda Function` from our `State Machine`
 - `activity` step allows us to run any code on `EC2 Instances`. It is similar to `task` step just that `activity` step is not `Serverless` kind of step.
+- Whenever any `Step` in `State Machine` fails, entire `State Machine` fails. Here `Steps` as in `Lambda Functions` or any errors or exceptions received by `Step`.
 
 ----------------------------------------
 
