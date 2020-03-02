@@ -393,6 +393,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - `activity` step allows us to run any code on `EC2 Instances`. It is similar to `task` step just that `activity` step is not `Serverless` kind of step.
 - Whenever any `Step` in `State Machine` fails, entire `State Machine` fails. Here `Steps` as in `Lambda Functions` or any errors or exceptions received by `Step`.
 - We can also use `CloudWatch Rules` to execute a `State Machine`.
+- We can use `Lambda Function` to trigger `State Machine Execution`. The advantage of this approach is that `Lambda Functions` support many triggers for their invocation. By triggering `State Machine` using `AWS SDK` from `Lambda Function`, we eventually have access to use all the triggers available for `Lambda Function Invocation`.
 
 ----------------------------------------
 
