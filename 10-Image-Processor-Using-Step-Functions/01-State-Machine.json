@@ -1,0 +1,28 @@
+{
+    "StartAt": "GetFileType",
+    "States": {
+        "GetFileType": {
+            "Type": "Pass",
+            "Next": "CheckFileType"
+        },
+        "CheckFileType": {
+            "Type": "Choice",
+            "Choices": [
+                {
+                    "Variable": "$.results.fileType",
+                    "StringEquals": "jpg",
+                    "Next": "ProcessFile"
+                }
+            ],
+            "Default": "DeleteSourceFile"
+        },
+        "ProcessFile": {
+            "Type": "Pass",
+            "End": true
+        },
+        "DeleteSourceFile": {
+            "Type": "Pass",
+            "End": true
+        }
+    }
+}
