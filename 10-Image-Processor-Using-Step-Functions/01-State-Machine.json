@@ -23,7 +23,26 @@
         "ProcessFile": {
             "Type": "Parallel",
             "Next": "WriteToDynamoDB",
-            "Branches": []
+            "Branches": [
+                {
+                    "StartAt": "CopyToDestination",
+                    "States": {
+                        "CopyToDestination": {
+                            "Type": "Pass",
+                            "End": true
+                        }
+                    }
+                },
+                {
+                    "StartAt": "ResizeImage",
+                    "States": {
+                        "ResizeImage": {
+                            "Type": "Pass",
+                            "End": true
+                        }
+                    }
+                }
+            ]
         },
         "WriteToDynamoDB": {
             "Type": "Pass",
