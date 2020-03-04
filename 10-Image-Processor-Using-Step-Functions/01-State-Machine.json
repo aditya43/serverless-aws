@@ -16,13 +16,18 @@
             ],
             "Default": "DeleteSourceFile"
         },
-        "ProcessFile": {
-            "Type": "Pass",
-            "End": true
-        },
         "DeleteSourceFile": {
             "Type": "Pass",
             "End": true
+        },
+        "ProcessFile": {
+            "Type": "Parallel",
+            "Next": "WriteToDynamoDB",
+            "Branches": []
+        },
+        "WriteToDynamoDB": {
+            "Type": "Pass",
+            "Next": "DeleteSourceFile"
         }
     }
 }
