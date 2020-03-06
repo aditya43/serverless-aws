@@ -394,6 +394,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - Whenever any `Step` in `State Machine` fails, entire `State Machine` fails. Here `Steps` as in `Lambda Functions` or any errors or exceptions received by `Step`.
 - We can also use `CloudWatch Rules` to execute a `State Machine`.
 - We can use `Lambda Function` to trigger `State Machine Execution`. The advantage of this approach is that `Lambda Functions` support many triggers for their invocation. So we have numerous options to trigger `Lambda Function` and our `Lambda Function` will trigger `State Machine Execution` using `AWS SDK`.
+- While building `State Machine` and if it has any `Lambda Functions (task states)`, always specify `TimeoutSeconds` option to make sure our `State Machine` doesn't get stuck or hung.
 
 ----------------------------------------
 
