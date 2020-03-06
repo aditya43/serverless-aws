@@ -4,7 +4,15 @@
         "GetFileType": {
             "Type": "Task",
             "Resource": "arn:aws:states:ap-south-1:983038403:stateMachine:getFileType",
-            "Next": "CheckFileType"
+            "TimeoutSeconds": 3,
+            "ResultPath": "$.results.fileType",
+            "Next": "CheckFileType",
+            "Catch": [
+                {
+                    "ErrorEquals": ["States.ALL", "States.Custom_Error_Name"],
+                    "Next": "QuitMain"
+                }
+            ]
         },
         "CheckFileType": {
             "Type": "Choice",
