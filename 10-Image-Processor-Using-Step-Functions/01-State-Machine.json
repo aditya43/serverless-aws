@@ -26,7 +26,17 @@
             "Default": "DeleteSourceFile"
         },
         "DeleteSourceFile": {
-            "Type": "Pass",
+            "Type": "Task",
+            "Resource": "arn:aws:states:ap-south-1:983038403:stateMachine:deleteSourceFile",
+            "TimeoutSeconds": 3,
+            "ResultPath": "$.results.deletionStatus",
+            "OutputPath": "$.results",
+            "Catch": [
+                {
+                    "ErrorEquals": ["States.ALL", "States.Custom_Error_Name"],
+                    "Next": "QuitMain"
+                }
+            ],
             "End": true
         },
         "ProcessFile": {
