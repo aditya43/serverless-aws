@@ -56,6 +56,11 @@
         "WriteToDynamoDB": {
             "Type": "Pass",
             "Next": "DeleteSourceFile"
+        },
+        "QuitMain": {
+            "Type": "Fail",
+            "Error": "GenericError",
+            "Cause": "An error occured while executing the State Machine"
         }
     }
 }
