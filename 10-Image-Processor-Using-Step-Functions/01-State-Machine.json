@@ -2,7 +2,8 @@
     "StartAt": "GetFileType",
     "States": {
         "GetFileType": {
-            "Type": "Pass",
+            "Type": "Task",
+            "Resource": "arn:aws:states:ap-south-1:983038403:stateMachine:getFileType",
             "Next": "CheckFileType"
         },
         "CheckFileType": {
