@@ -94,6 +94,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 ### Theory
 - Every AWS account comes with a default `VPC (Virtual Private Cloud)`.
 - At the moment, `AWS Lambda Function` can run upto a maximum of `15 Minutes`.
+- Returning `HTTP` responses from `AWS Lambda` allows us to integrate them with `Lambda Proxy Integration` for `API Gateway`.
 - A `Step Function` can run upto a maximum period of `1 Year`.
 - **`Step Functions` allows us to combine different `Lambda Functions` to build `Serverless Applications` and `Microservices`.**
 - There could be different reasons why you may want to restrict your `Lambda Function` to run within a given `VPC`. For e.g.
