@@ -411,6 +411,22 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         AWSTemplateFormatVersion: "2010-09-09"
         Transform: AWS::Serverless-2016-10-31
     ```
+- To deploy `SAM` application:
+    * It involves `2 Steps`:
+        - Package application and push it to `S3 Bucket`. This step requires `S3 Bucket` to be created in prior to running `CloudFormation Package` command.
+        - Deploy packaged application.
+    * Step 1: We need an `S3 Bucket` created before we deploy. If we don't have one, then create it using following command:
+        ```sh
+            aws s3 mb s3://aditya-sam-app
+        ```
+    * Step 2: Package application:
+        ```sh
+            aws cloudformation package --template-file template.yml --output-template-file output-sam-template.yml --s3-bucket aditya-sam-app
+        ```
+    * Step 3: Deploy application (Here, we will be using generated output SAM template file):
+        ```sh
+            aws cloudformation deploy --template-file output-sam-template.yml --stack-name aditya-sam-app-stack --capabilities CAPABILITY_IAM
+        ```
 
 ----------------------------------------
 
