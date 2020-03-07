@@ -1,0 +1,46 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Hello World With SAM
+
+Globals:
+  Function:
+    MemorySize: 128
+    Runtime: nodejs12.x
+    Timeout: 5
+
+Resources:
+  MyBucket:
+    Type: AWS::S3::Bucket
+  eventLogger:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: 01-logger.handler
+      Timeout: 3 # Overriding value set by Timeout in Globals---->Function
+      Events:
+        GetLogs:
+          Type: Api
+          Properties:
+            Path: /logs
+            Method: get
+        FileUpload:
+          Type: S3
+          Properties:
+            Bucket: !Ref MyBucket
+            Events: s3.ObjectCreated:*
+  addNumbers:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: 02-add.handler
+      Events:
+        GetLogs:
+          Type: Api
+          Properties:
+            Path: /app
+            Method: post
+
+  ##### Way to explicitely define API gateway
+  # TestAPI:
+  #   Type: AWS::Serverless::Api
+  #   Properties:
+  #     StageName: test
+  #     DefinitionUri: swagger-def.yml

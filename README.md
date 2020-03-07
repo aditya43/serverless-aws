@@ -406,6 +406,11 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - `AWS SAM` is just a simplified version of `CloudFormation Templates`.
 - It seemlessly integrates into `AWS Deployment Tools` like `CodeBuild`, `CodeDeploy`, `CodePipeline` etc.
 - It provides `CLI` to build, test and deploy `Serverless Applications`.
+- Every `SAM Template` begins with :
+    ```yaml
+        AWSTemplateFormatVersion: "2010-09-09"
+        Transform: AWS::Serverless-2016-10-31
+    ```
 
 ----------------------------------------
 
