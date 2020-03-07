@@ -70,6 +70,7 @@ WIP (Work In Progress)!
 - [AWS Lambda Limits](#aws-lambda-limits)
 - [DynamoDB](#dynamodb)
 - [AWS Step Functions](#aws-step-functions)
+- [AWS SAM](#aws-sam)
 - [Setup And Workflow 101](#setup-and-workflow-101)
 - [New Project Setup In Pre Configured Environment 101](#new-project-setup-in-pre-configured-environment-101)
 - [Installing Serverless](#installing-serverless)
@@ -396,6 +397,14 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - We can use `Lambda Function` to trigger `State Machine Execution`. The advantage of this approach is that `Lambda Functions` support many triggers for their invocation. So we have numerous options to trigger `Lambda Function` and our `Lambda Function` will trigger `State Machine Execution` using `AWS SDK`.
 - While building `State Machine` and if it has any `Lambda Functions (task states)`, always specify `TimeoutSeconds` option to make sure our `State Machine` doesn't get stuck or hung.
 - In `State Machine`, `catch` field is used to specify `Error Handling Catch Mechanism`.
+
+----------------------------------------
+
+### AWS SAM
+- AWS SAM `Serverless Application Model`.
+- `AWS SAM` is just a simplified version of `CloudFormation Templates`.
+- It seemlessly integrates into `AWS Deployment Tools` like `CodeBuild`, `CodeDeploy`, `CodePipeline` etc.
+- It provides `CLI` to build, test and deploy `Serverless Applications`.
 
 ----------------------------------------
 
