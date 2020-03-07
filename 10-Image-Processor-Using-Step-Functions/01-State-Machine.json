@@ -123,8 +123,17 @@
             ]
         },
         "WriteToDynamoDB": {
-            "Type": "Pass",
-            "Next": "DeleteSourceFile"
+            "Type": "Task",
+            "Next": "DeleteSourceFile",
+            "Resource": "arn:aws:states:ap-south-1:983038403:stateMachine:writeToDynamoDB",
+            "TimeoutSeconds": 3,
+            "ResultPath": "$.results.writeStatus",
+            "Catch": [
+                {
+                    "ErrorEquals": ["States.ALL"],
+                    "Next": "QuitMain"
+                }
+            ],
         },
         "QuitMain": {
             "Type": "Fail",
