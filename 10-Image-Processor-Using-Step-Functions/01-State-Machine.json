@@ -41,14 +41,33 @@
         },
         "ProcessFile": {
             "Type": "Parallel",
+            "ResultPath": "$.results.images",
             "Next": "WriteToDynamoDB",
             "Branches": [
                 {
                     "StartAt": "CopyToDestination",
                     "States": {
                         "CopyToDestination": {
-                            "Type": "Pass",
-                            "End": true
+                            "Type": "Task",
+                            "Resource": "arn:aws:states:ap-south-1:983038403:stateMachine:copyFile",
+                            "TimeoutSeconds": 3,
+                            "ResultPath": "$.image.original",
+                            "OutputPath": "$.image",
+                            "End": true,
+                            "Retry": [
+                                {
+                                    "ErrorEquals": ["States.TaskFailed", "States.Timeout"],
+                                    "IntervalSeconds": 5,
+                                    "MaxAttempts": 2,
+                                    "BackoffRate": 2.0
+                                },
+                                {
+                                    "ErrorEquals": ["States.All"],
+                                    "IntervalSeconds": 2,
+                                    "MaxAttempts": 2,
+                                    "BackoffRate": 2.0
+                                }
+                            ]
                         }
                     }
                 },
