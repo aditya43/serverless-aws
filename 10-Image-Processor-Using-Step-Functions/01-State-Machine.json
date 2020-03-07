@@ -133,7 +133,7 @@
                     "ErrorEquals": ["States.ALL"],
                     "Next": "QuitMain"
                 }
-            ],
+            ]
         },
         "QuitMain": {
             "Type": "Fail",
