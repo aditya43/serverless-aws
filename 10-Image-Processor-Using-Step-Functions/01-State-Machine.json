@@ -67,7 +67,18 @@
                                     "MaxAttempts": 2,
                                     "BackoffRate": 2.0
                                 }
+                            ],
+                            "Catch": [
+                                {
+                                    "ErrorEquals": ["States.All"],
+                                    "Next": "QuitCopy"
+                                }
                             ]
+                        },
+                        "QuitCopy": {
+                            "Type": "Fail",
+                            "Error": "CopyError",
+                            "Cause": "An error occured while executing the CopyToDestination task"
                         }
                     }
                 },
@@ -75,8 +86,37 @@
                     "StartAt": "ResizeImage",
                     "States": {
                         "ResizeImage": {
-                            "Type": "Pass",
-                            "End": true
+                            "Type": "Task",
+                            "Resource": "arn:aws:states:ap-south-1:983038403:stateMachine:resizeImage",
+                            "TimeoutSeconds": 3,
+                            "ResultPath": "$.image.resized",
+                            "OutputPath": "$.image",
+                            "End": true,
+                            "Retry": [
+                                {
+                                    "ErrorEquals": ["States.TaskFailed", "States.Timeout"],
+                                    "IntervalSeconds": 5,
+                                    "MaxAttempts": 2,
+                                    "BackoffRate": 2.0
+                                },
+                                {
+                                    "ErrorEquals": ["States.All"],
+                                    "IntervalSeconds": 2,
+                                    "MaxAttempts": 2,
+                                    "BackoffRate": 2.0
+                                }
+                            ],
+                            "Catch": [
+                                {
+                                    "ErrorEquals": ["States.All"],
+                                    "Next": "QuitResize"
+                                }
+                            ]
+                        },
+                        "QuitResize": {
+                            "Type": "Fail",
+                            "Error": "CopyError",
+                            "Cause": "An error occured while executing the ResizeImage task"
                         }
                     }
                 }
