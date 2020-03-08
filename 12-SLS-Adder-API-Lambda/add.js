@@ -1,5 +1,5 @@
 module.exports.add = async event => {
-    const { num1, num2 } = event;
+    const { num1, num2 } = JSON.parse(event.body);
 
     return {
         statusCode: 200,
