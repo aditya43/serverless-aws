@@ -449,6 +449,12 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         ```sh
             sam local start-api
         ```
+- To validate `SAM Template` locally,
+    * Navigate to folder where our `SAM Template` is located (e.g. `template.yaml`).
+    * Execute following command to validate `SAM Template` locally:
+        ```sh
+            sam validate
+        ```
 
 ----------------------------------------
 
