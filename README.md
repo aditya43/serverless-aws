@@ -595,6 +595,24 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
             events:
                 - schedule: rate(1 minute)
     ```
+- To configure `Lambda Function` to run under `VPC`:
+    * We need `Security Group Ids` and `Subnet Ids`, to get them:
+        - Under `AWS Console`, go to `VPC`.
+        - Go to `Security Groups` and copy `Group ID`. We can copy `default` one. Just one `Security Group Id` is enough though. Specify it under `securityGroupIds`.
+        - Go to `Subnets`. Each `AWS Region` has number of `Subnets`. Copy `Subnet ID` and specify them under `subnetIds` option. Although `Serverless` requires `At least 2` subnets, We can copy all the subnets and specify them under `subnetIds` option.
+    * Under `serverless.yml` file, set:
+        ```yml
+            functions:
+                hello: # This function is configured to run under VPC.
+                    handler: handler.hello
+                    vpc:
+                        securityGroupIds: # We can specify 1 or more security group ids here.
+                            - sg-703jd2847
+                        subnetIds: # We must at least provide 2 subnet ids.
+                            - subnet-qndk392nc2
+                            - subnet-dodh28dg2b
+                            - subnet-ondn29dnb2
+        ```
 
 ----------------------------------------
 

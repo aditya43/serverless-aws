@@ -61,8 +61,13 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
+  hello: # This function is configured to run under VPC.
     handler: handler.hello
+    vpc:
+      securityGroupIds: # We can specify 1 or more security group ids here.
+        -
+      subnetIds: # We must at least provide 2 subnet ids.
+        -
 
   add:
     handler: add.add
