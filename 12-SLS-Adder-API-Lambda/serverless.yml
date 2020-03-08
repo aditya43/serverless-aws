@@ -66,6 +66,8 @@ functions:
 
   add:
     handler: add.add
+    memorySize: 256 # Overriding default value set at Provider level.
+    timeout: 6 # Overriding default value set at Provider level.
     events:
       - http:
           path: math/add
