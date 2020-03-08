@@ -579,7 +579,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         # Example #2:
         sls logs -f sayHello -s dev --startTime 15m
     ```
-- To remove project/function:
+- To remove project/function (This will delete the deployed `CloudFormation Stack` with all the resources):
     ```sh
         # To remove everything.
         sls remove -v -s [STAGE_NAME]
