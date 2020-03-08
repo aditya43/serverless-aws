@@ -471,6 +471,13 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         ```sh
             sam deploy --template-file output-sam-template.yaml --stack-name aditya-sam-app-stack --capabilities CAPABILITY_IAM
         ```
+- To view `Lambda Function` logs using `SAM CLI`:
+    ```sh
+        sam logs -n LAMBDA_FUNCTION_NAME --stack-name STACK_NAME -- tail
+
+        # For e.g.:
+        sam logs -n GetUser --stack-name aditya-sam-app-stack -- tail
+    ```
 
 ----------------------------------------
 
