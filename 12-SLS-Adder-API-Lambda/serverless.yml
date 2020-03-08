@@ -79,6 +79,31 @@ functions:
           method: post
           cors: true
 
+  add-body-mapping:
+    handler: add-body-mapping.add
+    events:
+      - http:
+          path: math/add
+          method: post
+          cors: true
+          integration: lambda # if we don't specify this, the Serverless framework will default to using Lambda Proy Integration. What we want here is Lambda Integration here instead. So that allows to add request and response mappings.
+          request:
+            template:
+              application/json: >
+                #set($inputRoot = $input.path('$'))
+                {
+                  "num1": $inputRoot.input.operand1,
+                  "num2": $inputRoot.input.operand2
+                }
+          response:
+            headers:
+              Access-Control-Allow-Origin: "*"
+              Content-Type: "'application/json'"
+            template: >
+              #set($inputRoot = $input.path('$'))
+              {
+                "result": $inputRoot
+              }
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
