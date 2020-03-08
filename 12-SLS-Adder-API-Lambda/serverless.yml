@@ -60,9 +60,13 @@ provider:
 functions:
   hello:
     handler: handler.hello
+    memorySize: 128
+    timeout: 3
 
   add:
     handler: add.add
+    memorySize: 128
+    timeout: 3
     events:
       - http:
           path: math/add
