@@ -439,6 +439,11 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         # Alternatively, we can pass event data inline within the command by simply piping it as below. Here we are sending empty event data to Lambda Function.
         echo '{}' | sam local invoke HelloWorldFunction
     ```
+- `SAM CLI` also allows to invoke `Lambda Functions` locally from within our application code. To do so, we have to start `Lambda Service` locally using `SAM CLI`:
+    ```sh
+        sam local start-lambda
+    ```
+
 ----------------------------------------
 
 ### Setup And Workflow 101
