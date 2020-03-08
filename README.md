@@ -427,7 +427,18 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         ```sh
             aws cloudformation deploy --template-file output-sam-template.yml --stack-name aditya-sam-app-stack --capabilities CAPABILITY_IAM
         ```
+- To generate SAM project boilerplate from sample app:
+    ```sh
+        sam init --runtime nodejs12.x
+    ```
+- To execute `Lambda Function` locally with `SAM CLI`:
+    ```sh
+        # -e to pass event data to Lambda Function. This file must be present in the current location.
+        sam local invoke HelloWorldFunction -e events/event.json
 
+        # Alternatively, we can pass event data inline within the command by simply piping it as below. Here we are sending empty event data to Lambda Function.
+        echo '{}' | sam local invoke HelloWorldFunction
+    ```
 ----------------------------------------
 
 ### Setup And Workflow 101
