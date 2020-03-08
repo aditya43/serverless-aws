@@ -23,6 +23,9 @@ service: service-12-sls-adder-api-lambda
 provider:
   name: aws
   runtime: nodejs12.x
+  memorySize: 128
+  timeout: 3
+
 
 # you can overwrite defaults here
 #  stage: dev
@@ -60,13 +63,9 @@ provider:
 functions:
   hello:
     handler: handler.hello
-    memorySize: 128
-    timeout: 3
 
   add:
     handler: add.add
-    memorySize: 128
-    timeout: 3
     events:
       - http:
           path: math/add
