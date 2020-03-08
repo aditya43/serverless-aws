@@ -608,7 +608,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
                     vpc:
                         securityGroupIds: # We can specify 1 or more security group ids here.
                             - sg-703jd2847
-                        subnetIds: # We must at least provide 2 subnet ids.
+                        subnetIds: # We must at least provide 2 su1bnet ids.
                             - subnet-qndk392nc2
                             - subnet-dodh28dg2b
                             - subnet-ondn29dnb2
