@@ -443,6 +443,12 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     ```sh
         sam local start-lambda
     ```
+- To run `API Gateway` service locally:
+    * Navigate to folder where our `SAM Template` is located (e.g. `template.yaml`).
+    * Execute following command to run `API Gateway Service` locally:
+        ```sh
+            sam local start-api
+        ```
 
 ----------------------------------------
 
