@@ -22,6 +22,9 @@ exports.handler = async event => {
             body: JSON.stringify(data.Item)
         };
     } else {
-        throw new Error('User not found');
+        return {
+            statusCode: 200,
+            body: JSON.stringify({ message: 'User not found' })
+        };
     }
 };
