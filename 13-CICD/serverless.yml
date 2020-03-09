@@ -1,0 +1,17 @@
+service: aws-cicd
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: ap-south-1
+  memorySize: 128
+  timeout: 3
+
+functions:
+  hello:
+    handler: handler.logger
+    events:
+      - http:
+          path: message
+          method: get

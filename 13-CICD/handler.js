@@ -1,7 +1,7 @@
 'use strict';
 const moment = require('moment');
 
-module.exports.hello = async event => {
+module.exports.logger = async event => {
     return {
         statusCode: 200,
         body: JSON.stringify(
