@@ -489,6 +489,29 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     * It is a `Continious Integration` service. We can use it to `Package` and **optionally** `Deploy` our applications.
 - `AWS CodePipeline`
     * It is a `Continious Delivery` service. It allows us to automate entire `Deployment` and `Release Cycles`.
+- **Setup 101**.
+    * Initialize `Git Repository` on local machine.
+    * Step #1: Create `CodeCommit Repository`:
+        - Go to `CodeCommit` in `AWS Console` and create new repository.
+        - Go to `IAM` in `AWS Console` and create new user. Provide:
+            * Only `Programmatic Access`. No need to provide access to `AWS Console`.
+            * Attach `Existing Policy`. Look for `CodeCommit` in policies.
+            * It will show us `AWS Credentials` for the user. Ignore them.
+            * Under `Users`, open that user and go to `Security Credentials`. Scroll down to see `HTTPS Git credentials for AWS CodeCommit`. Click on `Generate` button there.
+            * It will show us `Username` and `Password` for this user. Download that.
+        - Go to `CodeCommit` console and click on `Connect` button.
+        - Copy `Repository URL` from the popup.
+        - On our local machine, we need to add `CodeCommit Repository` as `Remote Repository` using following command:
+            ```sh
+                git remote add origin CODECOMMIT_REPOSITORY_URL
+            ```
+        - On our local machine, add upstream origin using following command (Repeat this for all local branches):
+            ```sh
+                # 'origin' refers to the remote repository. i.e. CODECOMMIT_REPOSITORY_URL
+                git push --set-upstream origin LOCAL_BRANCH
+            ```
+        - It will ask for credentials only once. Specify credentials we downloaded from `IAM Console` for our created user.
+
 
 ----------------------------------------
 
