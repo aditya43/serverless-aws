@@ -511,6 +511,24 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
                 git push --set-upstream origin LOCAL_BRANCH
             ```
         - It will ask for credentials only once. Specify credentials we downloaded from `IAM Console` for our created user.
+    * Step #2: Setup `CodeBuild`:
+         - Go to `CodeBuild` in `AWS Console`.
+         - Before we create a `CodeBuild Project`, we will need an `IAM Role` that `CodeBuild` can assume on be our half.
+            * For e.g. When we create and deploy our `Serverless Project`, it creates different resouces like `Lambda Functions, APIS, DynamoDB Tables, IAM Roles` in the background using `CloudFormation`. When we deploy from our computer, `AWS Credentials` stored in environment variable of our computer are used. Now the same deployment has to run from a `Containerized Environment` created by `CodeBuild`. So we must provide the same permissions to `CodeBuild` as we provided to the user which connects to AWS while deploying using `Serverless Framework`.
+        - Go to `IAM` in `AWS Console` and create new `Role`.
+            * Under `Choose the service that will use this role`, select `CodeBuild` and click on `Continue`.
+            * Select access (We can choose `Administrator Access`) and click on `Review` and create the `Role`.
+            * Now, we can go ahead and create `CodeBuild` project.
+        - Go to `CodeBuild` console and create a project.
+            * Under `Source Provider`, select `AWS CodeCommit` option. Select `CodeCommit Repository`.
+            * Under `Environment: How to build`,
+                - Select `Operating System` as `Ubuntu`.
+                - Under `Runtime`, select `Node.js`.
+                - Select `Runtime Version`.
+                - Under `Build Specifications`, we will use `buildspec.yml` file.
+            * Under `Service Role`, select the `Role` we created.
+            * Under `Advanced Settings`, create `Environment Variable` as `ENV_NAME = dev`. This way we can build similar project for different environments like `prod, stage` etc..
+            * Continue and review the configuration and click on `Save` button. Do not click on `Save and Build` button.
 
 
 ----------------------------------------
