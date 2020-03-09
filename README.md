@@ -491,7 +491,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     * It is a `Continious Delivery` service. It allows us to automate entire `Deployment` and `Release Cycles`.
 - **Setup 101**.
     * Initialize `Git Repository` on local machine.
-    * Step #1: Create `CodeCommit Repository`:
+    * **Step #1:** Create `CodeCommit Repository`:
         - Go to `CodeCommit` in `AWS Console` and create new repository.
         - Go to `IAM` in `AWS Console` and create new user. Provide:
             * Only `Programmatic Access`. No need to provide access to `AWS Console`.
@@ -511,7 +511,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
                 git push --set-upstream origin LOCAL_BRANCH
             ```
         - It will ask for credentials only once. Specify credentials we downloaded from `IAM Console` for our created user.
-    * Step #2: Setup `CodeBuild`:
+    * **Step #2:** Setup `CodeBuild`:
          - Go to `CodeBuild` in `AWS Console`.
          - Before we create a `CodeBuild Project`, we will need an `IAM Role` that `CodeBuild` can assume on be our half.
             * For e.g. When we create and deploy our `Serverless Project`, it creates different resouces like `Lambda Functions, APIS, DynamoDB Tables, IAM Roles` in the background using `CloudFormation`. When we deploy from our computer, `AWS Credentials` stored in environment variable of our computer are used. Now the same deployment has to run from a `Containerized Environment` created by `CodeBuild`. So we must provide the same permissions to `CodeBuild` as we provided to the user which connects to AWS while deploying using `Serverless Framework`.
@@ -529,7 +529,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
             * Under `Service Role`, select the `Role` we created.
             * Under `Advanced Settings`, create `Environment Variable` as `ENV_NAME = dev`. This way we can build similar project for different environments like `prod, stage` etc..
             * Continue and review the configuration and click on `Save` button. Do not click on `Save and Build` button.
-    * Step 3: Create a `buildspec.yml` file at root of our project.
+    * **Step 3:** Create a `buildspec.yml` file at root of our project.
         - `buildspec.yml` file tells `CodeBuild` what to do with the sourcecode it downloads from the `CodeCommit Repository`.
         - For e.g.
             ```yml
@@ -556,6 +556,11 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
                             - echo Deployment completed on `date`..
             ```
         - Commit `buildspec.yml` file and deploy it to `CodeCommit Repository`.
+    * **Step #4 (Optional):** If we manually want to build our project,
+        - Go to `CodeBuild Console`, select our project and click on `Start Build`.
+            * Select the `CodeCommit Branch` that `CodeBuild` should read from.
+            * Click on `Start Build` button.
+            * It will pull the code from selected branch in `CodeCommit Repository`, and then run the commands we have specified in `buildspec.yml` file.
 
 ----------------------------------------
 
