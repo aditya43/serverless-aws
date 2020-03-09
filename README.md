@@ -71,6 +71,7 @@ WIP (Work In Progress)!
 - [DynamoDB](#dynamodb)
 - [AWS Step Functions](#aws-step-functions)
 - [AWS SAM](#aws-sam)
+- [CICD](#cicd)
 - [Setup And Workflow 101](#setup-and-workflow-101)
 - [New Project Setup In Pre Configured Environment 101](#new-project-setup-in-pre-configured-environment-101)
 - [Installing Serverless](#installing-serverless)
@@ -478,6 +479,16 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         # For e.g.:
         sam logs -n GetUser --stack-name aditya-sam-app-stack -- tail
     ```
+
+----------------------------------------
+
+### CICD
+- `AWS CodeCommit`
+    * It is a source control service which allows us to host our `Git Based` repositories.
+- `AWS CodeBuild`
+    * It is a `Continious Integration` service. We can use it to `Package` and **optionally** `Deploy` our applications.
+- `AWS CodePipeline`
+    * It is a `Continious Delivery` service. It allows us to automate entire `Deployment` and `Release Cycles`.
 
 ----------------------------------------
 
