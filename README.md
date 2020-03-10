@@ -529,7 +529,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
             * Under `Service Role`, select the `Role` we created.
             * Under `Advanced Settings`, create `Environment Variable` as `ENV_NAME = dev`. This way we can build similar project for different environments like `prod, stage` etc..
             * Continue and review the configuration and click on `Save` button. Do not click on `Save and Build` button.
-    * **Step 3:** Create a `buildspec.yml` file at root of our project.
+    * **Step #3:** Create a `buildspec.yml` file at root of our project.
         - `buildspec.yml` file tells `CodeBuild` what to do with the sourcecode it downloads from the `CodeCommit Repository`.
         - For e.g.
             ```yml
@@ -561,6 +561,37 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
             * Select the `CodeCommit Branch` that `CodeBuild` should read from.
             * Click on `Start Build` button.
             * It will pull the code from selected branch in `CodeCommit Repository`, and then run the commands we have specified in `buildspec.yml` file.
+    * **Step #5:** Setup `CodePipeline`:
+        - Go to `CodePipeline` in `AWS Console` and create a new `Pipeline`.
+            * `Source location`:
+                - Under `Source Provider`, select `AWS CodeCommit`.
+                - Select the `Repository` and `Branch Name (Generally master branch)`.
+                - We will use `CloudWatch Events` to detect changes. This is the default option. We can change this to make `CodePipeline` periodically check for changes.
+                    * By using `CloudWatch Events i.e. default option` under `Change detection options` setting, as soon as we push the change or an update to a `master branch` on `CodeCommit`, this `Pipeline` will get triggered automatically.
+                - Click next.
+            * `Build`:
+                - Under `Build Provider` option, select `AWS CodeBuild`.
+                - Under `Configure your project` options, select `Select existing build project` and under `Project name`, select our existing `CodeBuild` project.
+                - Click next.
+            * `Deploy`:
+                - Under `Deployment provider`, since our code deployment will be done through `Serverless Framework` in the `CodeBuild` step and we have defined our `buildspec.yml` file that way, we need to select `No Deployment` option.
+                - Click next.
+            * `AWS Service Role`:
+                - We need to create a necessary `Role` for `Pipeline`. Click on `Create role` button.
+                - `AWS` will automatically generate `Policy` with necessary `Permissions` for us. So simply click `Allow` button.
+                - Click `Next step` to review the configuration of `Pipeline`.
+            * Click on `Create Pipeline` button to create and run this `Pipeline`
+    * Now whenever we push changes to `master branch`, our code will get automatically deployed using `CICD`.
+    * **Step #6: Production Workflow Setup** - Adding manual approval before production deployment with `CodePipeline`.
+        - Once our code gets deployed to `Dev Stage`, it will be ready for testing. And it will trigger a `Manual Approval` request. The approver will approve or reject the change based on the outcome of testing. If the change gets rejected, the `Pipeline` should stop there. Otherwise, if the change is approved, the same code should be pushed to `Production Stage`. Following are the steps to implement this workflow:
+        - Go to `CodePipeline` in `AWS Console` and click on `Edit` button for our created `Pipeline`.
+        - After `Build Stage` using `CodeBuild`, click on `+ Stage` button to add new stage.
+        - Give this new stage a name. e.g. `ApproveForProduction`.
+        - Click on `+ Action` to add a new `Action`.
+            * Under `Action category` option, select `Approval`.
+            * Under `Approval Actions` options:
+                - Give an `Action Name`. For e.g. `Approve`.
+                - Set `Approval Type` to `Manual Approval` option.
 
 ----------------------------------------
 
