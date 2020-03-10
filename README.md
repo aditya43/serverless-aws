@@ -522,6 +522,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         - Go to `CodeBuild` console and create a project.
             * Under `Source Provider`, select `AWS CodeCommit` option. Select `CodeCommit Repository`.
             * Under `Environment: How to build`,
+                - Select option `Use an image managed by AWS CodeBuild`.
                 - Select `Operating System` as `Ubuntu`.
                 - Under `Runtime`, select `Node.js`.
                 - Select `Runtime Version`.
@@ -592,6 +593,44 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
             * Under `Approval Actions` options:
                 - Give an `Action Name`. For e.g. `Approve`.
                 - Set `Approval Type` to `Manual Approval` option.
+            * Under `Manual approval configuration` options:
+                - We need to create an `SNS Topic`.
+                    * Go to `SNS Console` under `AWS Console` and click on `Create Topic`.
+                    * Specify `Topic Name` and `Display Name`. For e.g. `Topic Name: cicd-production-approval` and `Display Name: CICD Production Approval`.
+                    * Click on `Create Topic` button.
+                    * Now that the topic has been created, we must `Subscribe` to the topic. Whenever `CodePipeline` triggers the `Manual Approval`, a `Notification` will be triggered to this topic. All the subscribers will be notified by Email for the approval. To setup this:
+                    * Click on `Create Subscription` button.
+                    * Under `Protocol`, select `Email` option.
+                    * Under `Endpoint`, add the email address and click the `Create Subscription` button.'
+                    * This will trigger the confirmation. Only after we confirm our email address, the `SNS` will start sending notifications.
+                    * `SNS` setup is done at this point. We can head back to `Manual approval configuration` options.
+                - Under `SNS Topic ARN`, select the `SNS Topic` we just created above.
+                - Under `URL For Review`, we can specify `API URL or Project URL`.
+                - Under `Comments`, specify comments if any. For e.g. `Kindly review and approve`.
+                - Click on `Add Action` button.
+        - After `Manual Approval` stage, click on `+ Action` to add a new `Action` for `Production Build`.
+            * Under `Action category` option, select `Build`.
+            * Under `Build Actions` options:
+                - Give an `Action Name`. For e.g. `CodeBuildProd`.
+                - Set `Build Provider` to `AWS CodeBuild` option.
+            * Under `Configure your project` options:
+                - Select `Create a new build project` option. It will exactly be the same as last one, only difference is it will use different value in `Environment Variables` viz. `Production.`
+                - Specify `Project Name`. For e.g. `cicd-production`.
+            * Under `Environment: How to build`,
+                - Select option `Use an image managed by AWS CodeBuild`.
+                - Select `Operating System` as `Ubuntu`.
+                - Under `Runtime`, select `Node.js`.
+                - Select `Runtime Version`.
+                - Under `Build Specifications`, we will use `buildspec.yml` file. i.e. Select option `Use the buildspec.yml in the source code root directory` option.
+            * Under `AWS CodeBuild service role` options:
+                - Select `Choose an existing service role from your account` option.
+                - Under `Role name`, select the existing role we created while setting up `CodeBuild` above.
+            * Under `Advanced Settings`, create `Environment Variable` as `ENV_NAME = prod`. This way we can build similar project for different environments like `prod, stage` etc..
+            * Click on `Save build project` button.
+            * We must provide `Input Artifacts` for this stage. So under `Input Artifacts` options:
+                - Set `Input artifacts #1` to `MyApp`.
+            * Click on `Add action` button.
+        - Click on `Save Pipeline Changes` button. It will popup the confirmation. Click on `Save and continue` button. And we are all set.
 
 ----------------------------------------
 
