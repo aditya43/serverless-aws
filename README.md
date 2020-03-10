@@ -72,8 +72,9 @@ WIP (Work In Progress)!
 - [AWS Step Functions](#aws-step-functions)
 - [AWS SAM](#aws-sam)
 - [CICD 101](#cicd-101)
-- [Best Practices - AWS Lambda](#best-practices---aws-lambda)
-- [Best Practices - AWS API Gateway](#best-practices---aws-api-gateway)
+- [Best Practices 101 - AWS Lambda](#best-practices-101---aws-lambda)
+- [Best Practices 101 - AWS API Gateway](#best-practices-101---aws-api-gateway)
+- [Best Practices 101 - DynamoDB](#best-practices-101---dynamodb)
 - [Setup And Workflow 101](#setup-and-workflow-101)
 - [New Project Setup In Pre Configured Environment 101](#new-project-setup-in-pre-configured-environment-101)
 - [Installing Serverless](#installing-serverless)
@@ -664,6 +665,13 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - When using `API Gateways` in `Production`, it's recommended to use `Custom Domains` instead of `API Gateway URLs`.
 - Deploy APIs closer to our customer's regions.
 - Add `Caching` to get additional performance gains.
+
+----------------------------------------
+
+### Best Practices 101 - DynamoDB
+- Most important is `Table Design`.
+- `DynamoDB Tables` provide the best performance when designed for `Uniformed Data Access`. `DynamoDB` divides the `Provisioned Throughput` equally between all the `Table Partitions` and hence in order to achieve maximum utilization of `Capacity Units`, we must design our `Table Keys` in such a way that `Read and Write Loads` are uniform across `Partitions or Partition Keys`. When `DynamoDB Tables` experience `Non-uniformed Access Patterns`, they will result in what is called as `Hot Partition`. i.e. Some partitions are accessed heavily while others remain idle. When this happens, the `Idle Provisioned Capacity` is wasted while we still have to keep paying for it.
+- `DAX (DynamoDB Accelerator)` doesn't come cheap.
 
 ----------------------------------------
 
