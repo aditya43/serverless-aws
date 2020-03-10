@@ -73,6 +73,7 @@ WIP (Work In Progress)!
 - [AWS SAM](#aws-sam)
 - [CICD 101](#cicd-101)
 - [Best Practices - AWS Lambda](#best-practices---aws-lambda)
+- [Best Practices - AWS API Gateway](#best-practices---aws-api-gateway)
 - [Setup And Workflow 101](#setup-and-workflow-101)
 - [New Project Setup In Pre Configured Environment 101](#new-project-setup-in-pre-configured-environment-101)
 - [Installing Serverless](#installing-serverless)
@@ -653,6 +654,16 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - Keep containers warm so they can be reused. This will reduce the latency introduced by `Cold Starts`. We can easily schedule dummy invocations with `CloudWatch Events` to keep the functions warm.
 - Make use of frameworks like `AWS SAM` or `Serverless Framework`.
 - Use `CI/CD` tools.
+
+----------------------------------------
+
+### Best Practices - AWS API Gateway
+- Keep API definitions as lean as possible. i.e. move all the logic to backend `Lambda Functions`. So unless absolutely necessary we could simply use `Lambda Proxy Integration` where `API Gateway` merely acts as a `Proxy` between `Caller` and a `Lambda Function`. All the data manipulations happen at one place and i.e. inside `Lambda Handler Function`.
+- Return useful responses back to the caller instead of returning generic server side errors.
+- Enable logging options in `API Gateways` so it is easier to track down failures to their causes. Enable `CloudWatch Logs` for APIs.
+- When using `API Gateways` in `Production`, it's recommended to use `Custom Domains` instead of `API Gateway URLs`.
+- Deploy APIs closer to our customer's regions.
+- Add `Caching` to get additional performance gains.
 
 ----------------------------------------
 
