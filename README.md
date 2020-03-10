@@ -71,7 +71,8 @@ WIP (Work In Progress)!
 - [DynamoDB](#dynamodb)
 - [AWS Step Functions](#aws-step-functions)
 - [AWS SAM](#aws-sam)
-- [CICD](#cicd)
+- [CICD 101](#cicd-101)
+- [Best Practices - AWS Lambda](#best-practices---aws-lambda)
 - [Setup And Workflow 101](#setup-and-workflow-101)
 - [New Project Setup In Pre Configured Environment 101](#new-project-setup-in-pre-configured-environment-101)
 - [Installing Serverless](#installing-serverless)
@@ -482,7 +483,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 
 ----------------------------------------
 
-### CICD
+### CICD 101
 - `AWS CodeCommit`
     * It is a source control service which allows us to host our `Git Based` repositories.
 - `AWS CodeBuild`
@@ -631,6 +632,27 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
                 - Set `Input artifacts #1` to `MyApp`.
             * Click on `Add action` button.
         - Click on `Save Pipeline Changes` button. It will popup the confirmation. Click on `Save and continue` button. And we are all set.
+
+----------------------------------------
+
+### Best Practices - AWS Lambda
+- Keep declarations/instantiations outside `Lambda Handlers`. This allows `Lambda Handlers` to reuse the objects when `Containers` get reused.
+- Keep the `Lambda Handlers` lean. i.e. Move the core logic of `Lambda Function` outside of the `Handler Functions`.
+- Avoid hardcoding, use `Environment Variables`.
+- One function, one task. This is `Microservices Architecture`.
+- Watch the deployment package size, remove unused dependencies. Check `package.json`. Certain libraries are available by default on `Lambda Functions`. We can remove those libraries from `package.json`.
+- Always keep an eye on `Lambda Logs`. Monitor the `Execution Duration` and `Memory Consumptions`.
+- Grant only the necessary `IAM Permissions` to `Lambda Functions`. Although the serverless team recommends using `Admin` user while developing `Serverless Framework Apps`.
+- In production, choose to give `API Key` with `PowerUserAccess` at the maximum to `Serverless Framework User`. Avoid giving `AdministratorAccess`.
+- Use `-c` flag with `Serverless Framework Deployments`. This will ensure that the commands will only generate `CloudFormation File` and not actually execute it. We can then execute this `CloudFormation File` from within `CloudFormation Console` or as part of our `CI/CD` process.
+- If we are creating any temporary files in `/tmp`, make sure to unlink them before we exit out of our handler functions.
+- There are restrictions on how many `Lambda Functions` we can create in one AWS account. So make sure to delete unused `Lambda Functions`.
+- Always make use of error handling mechanisms and `DLQs`. Put out codes in `Try..Catch` blocks, throw errors wherever needed and handle exceptions. Make use of `Dead Letter Queues (DLQ)` wherever appropriate.
+- Use `VPC` only if necessary. For e.g. if our `Lambda Function` need access to `RDS` which is in `VPC` or any `VPC` based resources, then only put our `Lambda Function` in `VPC`. Otherwise there is no need to put `Lambda Function` in `VPC`. `VPCs` are likely to add additional latency to our functions.
+- Be mindful of using `Reserved Concurrency`. If we are planning to use `Reserved Concurrency` then make sure that other `Lambda Functions` in our account have enough `concurrency` to work with. This is because every `AWS Account` gets `1000 Concurrent Lambda Executions Across Functions`. So if we reserve concurrency for any function then concurrency limit will reduce by that amount for other functions.
+- Keep containers warm so they can be reused. This will reduce the latency introduced by `Cold Starts`. We can easily schedule dummy invocations with `CloudWatch Events` to keep the functions warm.
+- Make use of frameworks like `AWS SAM` or `Serverless Framework`.
+- Use `CI/CD` tools.
 
 ----------------------------------------
 
