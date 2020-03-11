@@ -8,14 +8,25 @@ const helpers = require('../utils/helpers');
 AWS.config.update({ region: 'ap-south-1' });
 
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
-const tableName = process.env.NOTES_TABLE;
+const TableName = process.env.NOTES_TABLE;
 
 exports.handler = async event => {
     try {
+        const timestamp = parseInt(event.pathParameters.timestamp);
+
+        const params = {
+            TableName,
+            Key: {
+                user_id: helpers.getUserId(event.headers),
+                timestamp
+            }
+        };
+
+        await dynamoDB.delete(params).promise();
+
         return {
             statusCode: 200,
-            headers: helpers.getResponseHeaders(),
-            body: JSON.stringify('')
+            headers: helpers.getResponseHeaders()
         };
     } catch (err) {
         console.log(err);
