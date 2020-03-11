@@ -67,6 +67,7 @@ WIP (Work In Progress)!
 
 ## Important Notes
 - [Theory](#theory)
+- [Architecture Patterns - Multi-Tier Architecture](#architecture-patterns---multi---tier-architecture)
 - [AWS Lambda Limits](#aws-lambda-limits)
 - [DynamoDB](#dynamodb)
 - [AWS Step Functions](#aws-step-functions)
@@ -265,6 +266,28 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
     * If we are spawning any background processes in `Lambda Functions`, they will be executed only until `Lambda Handler` returns a response. Other time they will stay `Frozen`.
 - **Running a `Lambda Function` inside a `VPC` will result in `Cold Starts`. `VPC` also introduce some delay before a function could execute which could result in `Cold Start`.**
 - **`Resource Policies`** gets applied at the `API Gateway` level whereas **`IAM Policies`** gets applied at the `User/Client` level.
+
+----------------------------------------
+
+### Architecture Patterns - Multi-Tier Architecture
+- Most common architecture pattern that we almost find everywhere irrespective of whether we are using servers or going serverless.
+- The most common form of `Multi-Tier Architecture` is the `3-Tier Architecture`. Even the `Serverless` form will have same `3-Tiers` as below:
+    * `Frontend/Presentation Tier`.
+    * `Application/Logic Tier`.
+    * `Database/Data Tier`.
+- In `Serverless 3-Tier Architecture`,
+    * `Database/Data Tier`.
+        - The `Database/Data Tier` will contain the databases (`Data Stores`) like `DynamoDB`.
+        - `Data Stores` falls into 2 categories:
+            * **`IAM Enabled`** data stores (over `AWS APIs`). These data stores allows applications to connect to them through `AWS APIs`. For e.g. `DynamoDB`, `Amazon S3`, `Amazon ElasticSearch Service` etc.
+            * **`VPC Hosted`** data stores (using database credentials). These data stores runs in hosted instances within a `VPC`. For e.g. `Amazon RDS`, `Amazon Redshift`, `Amazon ElastiCache`. And ofcourse we can install any database of our choice on `EC2` and use it here. For e.g. we can run a `MongoDB` instance on `EC2` and connect to it through `Serverless Lambda Functions`.
+    * `Application/Logic Tier`.
+        - This is where the core business logic of our `Serverless Application` runs.
+        - This is where core `AWS Services` like `AWS Lambda`, `API Gateway`, `Amazon Cognito` etc. come into play.
+    * `Frontend/Presentation Tier`.
+        - This tier interacts with backend through `Application/Logic Tier`.
+        - For e.g. Frontend could use `API Gateway Endpoint` to call `Lambda Functions` which inturn interacts with data stores available in the `Database/Data Tier`.
+        - `API Gateway Endpoints` can be consumed by variety of applications such as `Web Apps` like static websites hosted on `S3`, `Mobile Application Frontends`, `Voice Enabled Devices Like Alexa` or different `IoT Devices`.
 
 ----------------------------------------
 
