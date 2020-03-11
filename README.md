@@ -68,6 +68,7 @@ WIP (Work In Progress)!
 ## Important Notes
 - [Theory](#theory)
 - [Architecture Patterns - Multi-Tier Architecture](#architecture-patterns---multi---tier-architecture)
+- [Architecture Patterns - Microservices Architecture](#architecture-patterns---microservices-architecture)
 - [AWS Lambda Limits](#aws-lambda-limits)
 - [DynamoDB](#dynamodb)
 - [AWS Step Functions](#aws-step-functions)
@@ -288,6 +289,17 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
         - This tier interacts with backend through `Application/Logic Tier`.
         - For e.g. Frontend could use `API Gateway Endpoint` to call `Lambda Functions` which inturn interacts with data stores available in the `Database/Data Tier`.
         - `API Gateway Endpoints` can be consumed by variety of applications such as `Web Apps` like static websites hosted on `S3`, `Mobile Application Frontends`, `Voice Enabled Devices Like Alexa` or different `IoT Devices`.
+
+----------------------------------------
+
+### Architecture Patterns - Microservices Architecture
+- Typical use case of `Serverless Architecture` is the `Microservices Architecture Pattern`.
+- The `Microservices Architecture Pattern` is an approach to developing single application as a **suit of small services**, each running in its own process and communicating with lightweight mechanisms, ofteb ab HTTP resource API.
+- These services are built around business capabilities and are **independently deployable** by fully automated deployment machinery.
+- There is a bare minimum of centralized management of these services, which may be written in different programming languages and use different data storage technologies.
+- The core idea of a `Microservices Architecture` is to take a complex system and break it down into independent decoupled services that are easy to manage and extend. These services communicate over well defined APIs and are often owned by small self-contained teams.
+- `Microservices Architecture` makes applications easy to scale and faster to develop, enabling innovation and accelerating time to market for new features.
+- Each `Service` performs a single specific function. And because they are running independently, each `Service` can be updated, deployed and scaled to meet the demands of the application.
 
 ----------------------------------------
 
