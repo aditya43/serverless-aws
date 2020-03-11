@@ -1,0 +1,19 @@
+version: 0.2 # Note: Each version can use the different syntax.
+
+phases: # There are 4 different types of phases we can define here. viz. 'install', 'pre_build', 'build', 'post_build'. Under each phase, we can specify commands for CodeBuild to execute on our be half. If there are any runtime errors while executing commands in particular phase, CodeBuild will not execute the next phase. i.e. If the execution reaches the 'posrt_build' phase, we can be sure that build was successful.
+  install:
+    commands:
+      - echo Installing Serverless.. # This is only for our reference.
+      - npm i -g serverless # Install serverless globally in container.
+  pre_build:
+    commands:
+      - echo Installing NPM dependencies
+      - npm i # This will install all the dependencies from package.json.
+  build:
+    commands:
+      - echo Deployment started on `date` # This will print current date.
+      - echo Deploying with the Serverless Framework
+      - sls deploy -v -s $ENV_NAME # '$ENV_NAME' is coming from environment variable we setup above.
+  post_build:
+    commands:
+      - echo Deployment completed on `date`
