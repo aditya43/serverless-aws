@@ -3,19 +3,40 @@
  */
 
 const AWS = require('aws-sdk');
-const helpers = require('../utils/helpers');
 
 AWS.config.update({ region: 'ap-south-1' });
 
+const moment = require('moment');
+const helpers = require('../utils/helpers');
+
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
-const tableName = process.env.NOTES_TABLE;
+const TableName = process.env.NOTES_TABLE;
 
 exports.handler = async event => {
     try {
+        const Item = JSON.parse(even.body).Item;
+
+        Item.user_id = helpers.getUserId(event.headers);
+        Item.user_name = helpers.getUserName(event.headers);
+        Item.expires = moment().add(90, 'days')
+            .unix();
+
+        const data = await dynamoDB.put({
+            TableName,
+            Item,
+            ConditionExpression: '#t = :t',
+            ExpressionAttributeNames: {
+                '#t': 'timestamp'
+            },
+            ExpressionAttributeValues: {
+                ':t': Item.timestamp
+            }
+        }).promise();
+
         return {
             statusCode: 200,
             headers: helpers.getResponseHeaders(),
-            body: JSON.stringify('')
+            body: JSON.stringify(data, null, 2)
         };
     } catch (err) {
         console.log(err);

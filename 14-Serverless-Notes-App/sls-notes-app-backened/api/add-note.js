@@ -4,11 +4,11 @@
 
 const AWS = require('aws-sdk');
 
+AWS.config.update({ region: 'ap-south-1' });
+
 const moment = require('moment');
 const uuidv5 = require('uuid/v5');
 const helpers = require('../utils/helpers');
-
-AWS.config.update({ region: 'ap-south-1' });
 
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
 const TableName = process.env.NOTES_TABLE;
