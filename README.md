@@ -72,6 +72,7 @@ WIP (Work In Progress)!
 - [AWS Step Functions](#aws-step-functions)
 - [AWS SAM](#aws-sam)
 - [CICD 101](#cicd-101)
+- [Serverless Security Best Practices 101](#serverless-security-best-practices-101)
 - [Best Practices 101 - AWS Lambda](#best-practices-101---aws-lambda)
 - [Best Practices 101 - AWS API Gateway](#best-practices-101---aws-api-gateway)
 - [Best Practices 101 - DynamoDB](#best-practices-101---dynamodb)
@@ -635,6 +636,37 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
                 - Set `Input artifacts #1` to `MyApp`.
             * Click on `Add action` button.
         - Click on `Save Pipeline Changes` button. It will popup the confirmation. Click on `Save and continue` button. And we are all set.
+
+----------------------------------------
+
+### Serverless Security Best Practices 101
+- `AWS Lambda` uses a decoupled permissions model. It uses 2 types of permissions:
+    * `Invoke Permissions`: Requires caller to only have permissions to invoke the `Lambda Function` and no more access is needed.
+    * `Execution Permissions`: It is used by `Lambda Function` itself to execute the function code.
+- Give each `Lambda Function` it's own `Execution Role`. Avoid using same `Role` across multiple `Lambda Functions`. This is because needs of our `Lambda Functions` may change over time and in that case we may have to alter permissions for `Role` assigned to our functions.
+- Avoid setting `Wildcard Permissions` to `Lambda Function Roles`.
+- Avoid giving `Full Access` to `Lambda Function Roles`.
+- Always provide only the necessary permissions keeping the `Role Policies` as restrictive as possible.
+- Choose only the required actions in the `IAM Policy` keeping the policy as restrictive as possible.
+- Sometimes `AWS` might add new `Action` on a `Resource` and if our `Policy` is uing a `Wildcard` on the `Actions`, it will automatically receive this additional access to new `Action` even though it may not require it. Hence it's a good and recommended idea to explicitely specify individual `Actions` in the policies and not use `Wildcards`.
+- Always make use of `Environment Variables` in `Lambda Functions` to store sensitive data.
+- Make use of `KMS (Key Management System) Encryption Service` to encrypt sensitive data stored in `Environment Variables`.
+- Make use of `KMS Encryption Service` to encrypt sensitive data `At Rest` and `In Transit`.
+- Remember that `Environment Variables` are tied to `Lambda Function Versions`. So it's a good idea to encrypt them before we generate the function version.
+- Never log the decrypted values or any sensitive data to console or any persistent storage. Remember that output from `Lambda Functions` is persisted in `CloudWatch Logs`.
+- For `Lambda Functions` running inside a `VPC`:
+    * Use least privilege security groups.
+    * Use `Lambda Function` specific `Subnets` and `Network Configurations` that allows only the `Lambda Functions` to access `VPC Resources`.
+- Following are the mechanisms available for controlling the `API Gateway` access:
+    * `API Keys` and `Usage Plans`.
+    * `Client Certificates`.
+    * `CORS Headers`.
+    * `API Gateway Resource Policies`.
+    * `IAM Policies`.
+    * `Lambda Authorizers`.
+    * `Cognito User Pool Authorizers`.
+    * `Federated Identity Access` using `Cognito`.
+- When using `CI/CD Pipelines` for automated deployments, make sure appropriate `Access Control` is in place. For e.g. If pushing code to `master branch` triggers our `Deployment Pipeline`, then we must ensure that only the authorized team members have ability to update the `master branch`.
 
 ----------------------------------------
 
