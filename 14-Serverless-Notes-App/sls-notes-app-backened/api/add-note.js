@@ -12,7 +12,11 @@ const tableName = process.env.NOTES_TABLE;
 
 exports.handler = async event => {
     try {
-
+        return {
+            statusCode: 200,
+            headers: helpers.getResponseHeaders(),
+            body: JSON.stringify('')
+        };
     } catch (err) {
         console.log(err);
 
