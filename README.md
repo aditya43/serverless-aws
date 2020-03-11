@@ -44,7 +44,7 @@ Serverless Framework with AWS & Node.JS..
     <tr>
         <td>DLQs</td>
         <td>CloudFront</td>
-        <td>OICD</td>
+        <td>OIDC</td>
         <td>Kinesis</td>
     </tr>
     <tr>
