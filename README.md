@@ -672,6 +672,16 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - Most important is `Table Design`.
 - `DynamoDB Tables` provide the best performance when designed for `Uniformed Data Access`. `DynamoDB` divides the `Provisioned Throughput` equally between all the `Table Partitions` and hence in order to achieve maximum utilization of `Capacity Units`, we must design our `Table Keys` in such a way that `Read and Write Loads` are uniform across `Partitions or Partition Keys`. When `DynamoDB Tables` experience `Non-uniformed Access Patterns`, they will result in what is called as `Hot Partition`. i.e. Some partitions are accessed heavily while others remain idle. When this happens, the `Idle Provisioned Capacity` is wasted while we still have to keep paying for it.
 - `DAX (DynamoDB Accelerator)` doesn't come cheap.
+- When changing the provisioned throughput for any `DynamoDB Table` i.e. `Scaling Up` or `Scaling Down`, we must avoid `Temporary Substantial Capacity` scaling up. Note: Substantial increases in `Provisioned Capacities` almost always result in `DynamoDB` allocating additional `Partitions`. And when we subsequently scale the capacity down, `DynamoDB` will not de-allocate previously allocated `Partitions`.
+- Keep `Item Attribute Names` short. This helps reduce the item size and thereby costs as well.
+- If we are to store large values in our items then we must consider compressing the `Non-Key Attributes`. We can use technique like `GZip` for example. Alternatively, we can store large items in `S3` and only pointers to those items are stored in `DynamoDB`.
+- `Scan` operations scan the entire table and hence are less efficient than `Query` operations. Thats why, **Avoid `Scan` operations.** Note: `Filters` always gets applied after the `Query` and `Scan` operations are completed.
+- Applicable `RCUs` are calculated before applying the `Filters`.
+- While performing read operations, go for `Strongly Consistent Reads` only if our application requires it. Otherwise always opt out for `Eventually Consistent Reads`. That saves half the money. Note: Any read operations on `Global Secondary Indexes` are `Eventually Consistent`.
+- Use `Local Sendary Indexes (LSIs)` sparingly. LSIs share the same partitions i.e. Same physical space that is used by the `DynamoDB Table`. So adding more LSIs will use more partition size. This doesn't mean we shouldn't use them, but use them as per our application's need.
+- When choosing the projections, we can project up to maximum of `20 Attributes per index`. So choose them carefully. i.e. Project as fewer attributes on to secondary indexes as possible. If we just need `Keys` then use only `Keys`, it will produce the smallest `Index`.
+- Design `Global Secondary Indexes (GSIs)` for uniform data access.
+- Use `Global Secondary Indexes (GSIs)` to create `Eventually Consistent Read Replicas`.
 
 ----------------------------------------
 
