@@ -310,7 +310,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - There are several big companies today that offers `Serverless Compute Services` like `AWS Lambda`. Some of the companies which are offering this service are `Google Cloud Functions`, `Microsoft Azure Functions`, `IBM Cloud Functions` etc.
 - When we choose `Cloud Provider`, we kind of gets locked in to continue using services offered by that particular `Cloud Provider`.
 - For building `Cloud Provider Agnostic Serverless Applications` or in other words - for building `Multi Provider Serverless Applications`, we can make use of `Serverless Framework`.
-- For building `Multi Provider Serverless Applications`, the team behind the `Serverless Framework` offers a solution called as `Event Gateway`.
+- For building `Multi Provider Serverless Applications`, the team behind the `Serverless Framework` offers a solution called as `Event Gateway` [https://github.com/serverless/event-gateway](#https://github.com/serverless/event-gateway).
 - `Event Gateway` is an open source tool and it is part of their offering called `Serverless Platform`.
 - The `Event Gateway` allows us to react to any event with `Serverless Functions` hosted on different `Cloud Providers`.
 - `Event Gateway` also allows us to send events from different `Cloud Providers` and we can react to these events using `Serverless Functions` from any `Cloud Provider`.
