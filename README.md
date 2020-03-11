@@ -638,7 +638,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 
 ----------------------------------------
 
-### Best Practices - AWS Lambda
+### Best Practices 101 - AWS Lambda
 - Keep declarations/instantiations outside `Lambda Handlers`. This allows `Lambda Handlers` to reuse the objects when `Containers` get reused.
 - Keep the `Lambda Handlers` lean. i.e. Move the core logic of `Lambda Function` outside of the `Handler Functions`.
 - Avoid hardcoding, use `Environment Variables`.
@@ -659,7 +659,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 
 ----------------------------------------
 
-### Best Practices - AWS API Gateway
+### Best Practices 101 - AWS API Gateway
 - Keep API definitions as lean as possible. i.e. move all the logic to backend `Lambda Functions`. So unless absolutely necessary we could simply use `Lambda Proxy Integration` where `API Gateway` merely acts as a `Proxy` between `Caller` and a `Lambda Function`. All the data manipulations happen at one place and i.e. inside `Lambda Handler Function`.
 - Return useful responses back to the caller instead of returning generic server side errors.
 - Enable logging options in `API Gateways` so it is easier to track down failures to their causes. Enable `CloudWatch Logs` for APIs.
