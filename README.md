@@ -67,9 +67,9 @@ WIP (Work In Progress)!
 
 ## Important Notes
 - [Theory](#theory)
-- [Architecture Patterns - Multi-Tier Architecture](#architecture-patterns---multi---tier-architecture)
-- [Architecture Patterns - Microservices Architecture](#architecture-patterns---microservices-architecture)
-- [Architecture Patterns - Multi-Provider Serverless Architecture](#architecture-patterns---multi---provider-serverless-architecture)
+- [Architecture Patterns - Multi Tier](#architecture-patterns---multi-tier)
+- [Architecture Patterns - Microservices](#architecture-patterns---microservices)
+- [Architecture Patterns - Multi Provider Serverless](#architecture-patterns---multi-provider-serverless)
 - [AWS Lambda Limits](#aws-lambda-limits)
 - [DynamoDB](#dynamodb)
 - [AWS Step Functions](#aws-step-functions)
@@ -271,7 +271,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 
 ----------------------------------------
 
-### Architecture Patterns - Multi-Tier Architecture
+### Architecture Patterns - Multi Tier
 - Most common architecture pattern that we almost find everywhere irrespective of whether we are using servers or going serverless.
 - The most common form of `Multi-Tier Architecture` is the `3-Tier Architecture`. Even the `Serverless` form will have same `3-Tiers` as below:
     * `Frontend/Presentation Tier`.
@@ -293,7 +293,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 
 ----------------------------------------
 
-### Architecture Patterns - Microservices Architecture
+### Architecture Patterns - Microservices
 - Typical use case of `Serverless Architecture` is the `Microservices Architecture Pattern`.
 - The `Microservices Architecture Pattern` is an approach to developing single application as a **suit of small services**, each running in its own process and communicating with lightweight mechanisms, ofteb ab HTTP resource API.
 - These services are built around business capabilities and are **independently deployable** by fully automated deployment machinery.
@@ -304,7 +304,7 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 
 ----------------------------------------
 
-### Architecture Patterns - Multi-Provider Serverless Architecture
+### Architecture Patterns - Multi Provider Serverless
 - Newer and slowly emmerging pattern.
 - This is all about reducing dependents on 1 specific cloud provider and making our application even more resilient.
 - There are several big companies today that offers `Serverless Compute Services` like `AWS Lambda`. Some of the companies which are offering this service are `Google Cloud Functions`, `Microsoft Azure Functions`, `IBM Cloud Functions` etc.
