@@ -75,6 +75,7 @@ WIP (Work In Progress)!
 - [Best Practices 101 - AWS Lambda](#best-practices-101---aws-lambda)
 - [Best Practices 101 - AWS API Gateway](#best-practices-101---aws-api-gateway)
 - [Best Practices 101 - DynamoDB](#best-practices-101---dynamodb)
+- [Best Practices 101 - Step Functions](#best-practices-101---step-functions)
 - [Setup And Workflow 101](#setup-and-workflow-101)
 - [New Project Setup In Pre Configured Environment 101](#new-project-setup-in-pre-configured-environment-101)
 - [Installing Serverless](#installing-serverless)
@@ -682,6 +683,13 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - When choosing the projections, we can project up to maximum of `20 Attributes per index`. So choose them carefully. i.e. Project as fewer attributes on to secondary indexes as possible. If we just need `Keys` then use only `Keys`, it will produce the smallest `Index`.
 - Design `Global Secondary Indexes (GSIs)` for uniform data access.
 - Use `Global Secondary Indexes (GSIs)` to create `Eventually Consistent Read Replicas`.
+
+----------------------------------------
+
+### Best Practices 101 - Step Functions
+- Always use `Timeouts` in `Task States`.
+- Always handle errors with `Retriers` and `Catchers`.
+- Use `S3` to store large payloads and pass only the `Payload ARN` between states.
 
 ----------------------------------------
 
