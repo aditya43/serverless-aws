@@ -1,0 +1,14 @@
+service: sls-notes-app-backened
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: ap-south-1
+  stage: prod
+  memorySize: 128
+  timeout: 5
+  endpointType: regional # We can also use edge-optimized endpointType.
+
+functions:
+  hello:
+    handler: handler.hello
