@@ -69,6 +69,7 @@ WIP (Work In Progress)!
 - [Theory](#theory)
 - [Architecture Patterns - Multi-Tier Architecture](#architecture-patterns---multi---tier-architecture)
 - [Architecture Patterns - Microservices Architecture](#architecture-patterns---microservices-architecture)
+- [Architecture Patterns - Multi-Provider Serverless Architecture](#architecture-patterns---multi---provider-serverless-architecture)
 - [AWS Lambda Limits](#aws-lambda-limits)
 - [DynamoDB](#dynamodb)
 - [AWS Step Functions](#aws-step-functions)
@@ -300,6 +301,20 @@ Open-sourced software licensed under the [MIT license](http://opensource.org/lic
 - The core idea of a `Microservices Architecture` is to take a complex system and break it down into independent decoupled services that are easy to manage and extend. These services communicate over well defined APIs and are often owned by small self-contained teams.
 - `Microservices Architecture` makes applications easy to scale and faster to develop, enabling innovation and accelerating time to market for new features.
 - Each `Service` performs a single specific function. And because they are running independently, each `Service` can be updated, deployed and scaled to meet the demands of the application.
+
+----------------------------------------
+
+### Architecture Patterns - Multi-Provider Serverless Architecture
+- Newer and slowly emmerging pattern.
+- This is all about reducing dependents on 1 specific cloud provider and making our application even more resilient.
+- There are several big companies today that offers `Serverless Compute Services` like `AWS Lambda`. Some of the companies which are offering this service are `Google Cloud Functions`, `Microsoft Azure Functions`, `IBM Cloud Functions` etc.
+- When we choose `Cloud Provider`, we kind of gets locked in to continue using services offered by that particular `Cloud Provider`.
+- For building `Cloud Provider Agnostic Serverless Applications` or in other words - for building `Multi Provider Serverless Applications`, we can make use of `Serverless Framework`.
+- For building `Multi Provider Serverless Applications`, the team behind the `Serverless Framework` offers a solution called as `Event Gateway`.
+- `Event Gateway` is an open source tool and it is part of their offering called `Serverless Platform`.
+- The `Event Gateway` allows us to react to any event with `Serverless Functions` hosted on different `Cloud Providers`.
+- `Event Gateway` also allows us to send events from different `Cloud Providers` and we can react to these events using `Serverless Functions` from any `Cloud Provider`.
+- `Event Gateway` tool is still under heavy development and not production ready yet (Today is 11 March 2020).
 
 ----------------------------------------
 
