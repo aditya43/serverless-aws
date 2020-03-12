@@ -1,5 +1,8 @@
 service: sls-notes-app-backened
 
+plugins:
+  -server-offline
+
 provider:
   name: aws
   runtime: nodejs12.x
@@ -10,6 +13,13 @@ provider:
   endpointType: regional # We can also use edge-optimized endpointType.
   environment:
     NOTES_TABLE: ${self:service}-${opt:stage, self:provider.stage}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:PutItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.NOTES_TABLE}"
 
 resources:
   Resources:
