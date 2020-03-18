@@ -1,7 +1,20 @@
 service: sls-notes-app-backened
 
 plugins:
-  -server-offline
+  - serverless-offline
+
+custom:
+  allowedHeaders:
+    - Accept
+    - Content-Type
+    - Content-Length
+    - Authorization
+    - X-Amz-Date
+    - X-Api-Key
+    - X-Amz-Security-Token
+    - X-Amz-User-Agent
+    - app_user_id
+    - app_user_name
 
 provider:
   name: aws
@@ -55,5 +68,17 @@ resources:
               WriteCapacityUnits: 1
 
 functions:
-  hello:
-    handler: handler.hello
+  add-note:
+    handler: api/add-note.handler
+    description: POST / note
+    events:
+      - http:
+          path: note
+          method: post
+          cors:
+            origin: '*'
+            headers: ${self:custom.allowedHeaders}
+  update-note:
+  get-notes:
+  get-note:
+  delete-note:
