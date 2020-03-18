@@ -73,7 +73,7 @@ functions:
     description: POST / note
     events:
       - http:
-          path: /note
+          path: note
           method: post
           cors:
             origin: '*'
@@ -83,7 +83,7 @@ functions:
     description: PATCH / note
     events:
       - http:
-          path: /note
+          path: note
           method: patch
           cors:
             origin: '*'
@@ -93,10 +93,19 @@ functions:
     description: GET / notes
     events:
       - http:
-          path: /notes
+          path: notes
           method: get
           cors:
             origin: '*'
             headers: ${self:custom.allowedHeaders}
   get-note:
+    handler: api/get-note.handler
+    description: GET /note/n/{note_id}
+    events:
+      - http:
+          path: note/n/{note_id}
+          method: get
+          cors:
+            origin: '*'
+            headers: ${self:custom.allowedHeaders}
   delete-note:
