@@ -79,6 +79,15 @@ functions:
             origin: '*'
             headers: ${self:custom.allowedHeaders}
   update-note:
+    handler: api/update-note.handler
+    description: PATCH / note
+    events:
+      - http:
+          path: note
+          method: patch
+          cors:
+            origin: '*'
+            headers: ${self:custom.allowedHeaders}
   get-notes:
   get-note:
   delete-note:
