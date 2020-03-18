@@ -109,3 +109,12 @@ functions:
             origin: '*'
             headers: ${self:custom.allowedHeaders}
   delete-note:
+    handler: api/delete-note.handler
+    description: DELETE /note/t/{note_id}
+    events:
+      - http:
+          path: note/t/{timestamp}
+          method: delete
+          cors:
+            origin: '*'
+            headers: ${self:custom.allowedHeaders}
